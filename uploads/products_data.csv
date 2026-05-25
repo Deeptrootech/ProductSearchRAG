@@ -1,0 +1,51 @@
+product_id,product_name,category,price,features,description
+1,Wireless Mouse,Electronics,25.99,"ergonomic, 2.4GHz, optical",Smooth and responsive wireless mouse for office use
+2,Running Shoes,Sports,59.99,"lightweight, breathable, durable",Comfortable running shoes for daily jogging
+3,Smartphone,Electronics,399.99,"64GB, 4GB RAM, 12MP camera",Sleek smartphone with high performance and excellent camera
+4,Coffee Maker,Home Appliances,79.99,"programmable, 12-cup, auto-shutoff",Brew delicious coffee effortlessly
+5,Backpack,Travel,45.99,"waterproof, 20L, multiple pockets",Durable backpack suitable for travel and everyday use
+6,Blender,Home Appliances,49.99,"500W, 1.5L, multiple speeds",Blend smoothies and sauces quickly and efficiently
+7,Yoga Mat,Sports,19.99,"non-slip, 6mm, lightweight",Comfortable yoga mat for daily exercise
+8,LED Desk Lamp,Electronics,29.99,"adjustable, touch control, energy-saving",Modern desk lamp with adjustable brightness
+9,Noise Cancelling Headphones,Electronics,129.99,"Bluetooth, over-ear, long battery life",Experience immersive sound with noise cancellation
+10,Electric Kettle,Home Appliances,39.99,"1.7L, auto shutoff, fast boil",Quickly boil water safely and efficiently
+11,Travel Pillow,Travel,14.99,"memory foam, ergonomic, portable",Comfortable pillow for long journeys
+12,Digital Watch,Accessories,59.99,"water-resistant, stopwatch, backlight",Stylish and functional digital watch
+13,Treadmill,Sports,499.99,"foldable, motorized, multiple programs",High-quality treadmill for home workouts
+14,Smartwatch,Electronics,199.99,"heart rate monitor, GPS, notifications",Track fitness and stay connected
+15,Vacuum Cleaner,Home Appliances,149.99,"bagless, 1200W, HEPA filter",Powerful vacuum cleaner for home cleaning
+16,Laptop Backpack,Travel,69.99,"laptop compartment, waterproof, durable",Protect your laptop and essentials while traveling
+17,Hiking Boots,Sports,89.99,"waterproof, ankle support, durable",Sturdy boots for outdoor adventures
+18,Air Fryer,Home Appliances,99.99,"4L, digital display, oil-free cooking",Cook crispy meals with little to no oil
+19,Wireless Charger,Electronics,24.99,"fast charging, Qi-compatible, compact",Convenient wireless charging for your devices
+20,Electric Toothbrush,Personal Care,49.99,"sonic, rechargeable, timer",Keep teeth clean and healthy effortlessly
+21,Portable Speaker,Electronics,59.99,"Bluetooth, waterproof, 10h battery",Take your music anywhere with clear sound
+22,Water Bottle,Travel,12.99,"BPA-free, 1L, leak-proof",Stay hydrated on the go
+23,Camping Tent,Sports,129.99,"4-person, waterproof, easy setup",Comfortable tent for outdoor camping
+24,Hair Dryer,Personal Care,39.99,"1800W, heat settings, lightweight",Dry hair quickly with multiple settings
+25,Sports Watch,Sports,79.99,"stopwatch, water-resistant, durable",Track your workouts efficiently
+26,Laptop,Electronics,799.99,"16GB RAM, 512GB SSD, Intel i7",High-performance laptop for work and gaming
+27,Office Chair,Furniture,149.99,"ergonomic, adjustable height, swivel",Comfortable chair for long work hours
+28,Microwave Oven,Home Appliances,99.99,"20L, grill function, digital",Cook meals quickly with multiple functions
+29,Sunglasses,Accessories,29.99,"UV protection, polarized, lightweight",Stylish sunglasses for everyday use
+30,Tablet,Electronics,299.99,"10-inch, 64GB, WiFi",Portable tablet for work and entertainment
+31,Electric Scooter,Transportation,399.99,"foldable, 15mph, 10-mile range",Eco-friendly scooter for city travel
+32,Camping Stove,Sports,59.99,"portable, gas-powered, lightweight",Cook outdoors easily while camping
+33,Backpacking Tent,Sports,149.99,"2-person, waterproof, lightweight",Perfect for hiking and overnight trips
+34,Cooking Pan,Home Appliances,34.99,"non-stick, 10-inch, dishwasher safe",Cook delicious meals effortlessly
+35,Fitness Tracker,Sports,69.99,"heart rate, step counter, sleep monitor",Monitor your fitness and health daily
+36,Smart Light Bulb,Electronics,19.99,"WiFi, color-changing, app control",Control your lighting with ease and style
+37,Winter Jacket,Clothing,119.99,"waterproof, insulated, hooded",Stay warm and dry during cold weather
+38,Desk Organizer,Furniture,24.99,"multi-compartment, durable, compact",Keep your desk neat and organized
+39,Bluetooth Earbuds,Electronics,49.99,"wireless, noise-isolating, long battery life",High-quality sound for music and calls
+40,Electric Grill,Home Appliances,89.99,"non-stick, temperature control, easy clean",Grill indoors with ease
+41,Running Shorts,Sports,29.99,"lightweight, breathable, moisture-wicking",Comfortable shorts for running and workouts
+42,Camera,Electronics,499.99,"24MP, 4K video, interchangeable lens",Capture stunning photos and videos
+43,Wallet,Accessories,39.99,"leather, RFID protection, slim",Stylish wallet to keep your essentials safe
+44,Bed Sheets,Furniture,59.99,"cotton, 300-thread count, queen size",Soft and comfortable sheets for a restful sleep
+45,Electric Blanket,Home Appliances,79.99,"dual control, washable, warm",Stay cozy during cold nights
+46,Travel Backpack,Travel,89.99,"50L, multiple compartments, durable",Carry all your travel essentials comfortably
+47,Skateboard,Sports,49.99,"maple wood, grip tape, durable",Fun and durable skateboard for all skill levels
+48,Smart Thermostat,Home Appliances,129.99,"WiFi, programmable, energy-saving",Control your home's temperature smartly
+49,Action Camera,Electronics,149.99,"waterproof, 4K, wide-angle",Capture adventures with high-quality video
+50,Cycling Helmet,Sports,59.99,"lightweight, adjustable, ventilated",Protective helmet for safe cycling
