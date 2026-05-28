@@ -7,10 +7,8 @@ This replaces the need to run SentenceTransformers locally
 
 import requests
 
-from vectorDB.query_db import VectorDB
 from .config import embedding_model, API_KEY, url
 
-db = VectorDB()
 
 
 class EmbeddingService:

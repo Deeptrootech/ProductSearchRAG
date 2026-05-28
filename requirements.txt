@@ -69,4 +69,4 @@ watchdog==6.0.0
 watchfiles==1.2.0
 websockets==16.0
 
-pymilvus==3.0.0
+pymilvus==3.0.0  # Python Client to interact with Milvus.

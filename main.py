@@ -4,11 +4,9 @@ import shutil
 
 from openrouter.openrouter_for_embeddings import EmbeddingService
 from utils.read_csv import FileProcessor
-from vectorDB.query_db import VectorDB
 
 app = FastAPI()
 
-db = VectorDB()
 processor = FileProcessor()
 embedder = EmbeddingService()
 UPLOAD_DIR = "uploads"
