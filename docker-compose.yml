@@ -14,11 +14,6 @@ services:
       - etcd_data:/etcd-data
     ports:
       - "2379:2379"
-    healthcheck:
-      test: [ "CMD", "etcdctl", "endpoint", "health" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   minio:
     image: minio/minio:latest
@@ -32,21 +27,14 @@ services:
     ports:
       - "9000:9000"
       - "9001:9001"
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   milvus:
     image: milvusdb/milvus:v2.5.5
     container_name: milvus-standalone
-    command: [ "milvus", "run", "standalone" ]
+    command: ["milvus", "run", "standalone"]
     depends_on:
-      etcd:
-        condition: service_healthy
-      minio:
-        condition: service_healthy
+      - etcd
+      - minio
     environment:
       ETCD_ENDPOINTS: milvus-etcd:2379
       MINIO_ADDRESS: milvus-minio:9000
@@ -58,6 +46,16 @@ services:
     ports:
       - "19530:19530"
       - "9091:9091"
+
+  attu:
+    image: zilliz/attu:latest
+    container_name: attu
+    depends_on:
+      - milvus
+    environment:
+      MILVUS_URL: milvus:19530
+    ports:
+      - "3001:3000"
 
 volumes:
   etcd_data:

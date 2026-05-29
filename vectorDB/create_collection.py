@@ -1,21 +1,28 @@
-from pymilvus import connections, Collection, FieldSchema, CollectionSchema, DataType
+from pymilvus import MilvusClient
 
-# Connect to Milvus
-connections.connect("default", host="localhost", port="19530")
+# *********************** Step 1: Connect to Milvus ***********************
+client = MilvusClient(uri="http://localhost:19530")
 
-# Define the schema
-fields = [
-    FieldSchema(name="id", dtype=DataType.INT64, is_primary=True, auto_id=True),
-    FieldSchema(name="title", dtype=DataType.VARCHAR, max_length=512),
-    FieldSchema(name="category", dtype=DataType.VARCHAR, max_length=100),
-    # Vector field: 384 dimensions (typical for sentence-transformers/all-MiniLM-L6-v2)
-    FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=384),
-]
+# *********************** Step 2: Create database ***********************
+db_name = "ProductSearchRAG"
+if db_name not in client.list_databases():
+    client.create_database(db_name)
+    print("DB created")
+else:
+    print("DB already exists")
 
-schema = CollectionSchema(fields, description="Document embeddings for semantic search")
+# *********************** Step 3: Create collection ***********************
+COLLECTION_NAME = "documents"
+DIMENSION = 1024  # replace with your real embedding dim
 
-# Create the collection
-collection = Collection("documents", schema)
-
-print(f"Collection created: {collection.name}")
-print(f"Schema: {collection.schema}")
+# Check if collection exists
+if client.has_collection(COLLECTION_NAME):
+    info = client.describe_collection(COLLECTION_NAME)
+    print("collection Already Exists:", info)
+else:
+    client.create_collection(
+        collection_name=COLLECTION_NAME,
+        dimension=DIMENSION,
+        metric_type="L2"
+    )
+    print(f"Collection '{COLLECTION_NAME}' created successfully.")

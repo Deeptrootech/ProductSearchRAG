@@ -10,7 +10,6 @@ import requests
 from .config import embedding_model, API_KEY, url
 
 
-
 class EmbeddingService:
 
     def generate_embedding(self, text):
