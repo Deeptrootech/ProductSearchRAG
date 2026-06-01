@@ -2,34 +2,36 @@
 How it works:
     1. You send text → get a vector embedding
     2. Embeddings can then be inserted into vector DB (Milvus, Pinecone, Chroma, Weaviate etc.)
-This replaces the need to run SentenceTransformers locally
+This OpenRouter API replaces the need to run SentenceTransformers locally
 """
-
 import requests
 
-from .config import embedding_model, API_KEY, url
+from config import (
+    EMBEDDING_URL,
+    EMBEDDING_MODEL,
+    OPENROUTER_API_KEY
+)
 
 
 class EmbeddingService:
-
-    def generate_embedding(self, text):
+    def get_embedding(self, text):
         try:
             response = requests.post(
-                url,
+                EMBEDDING_URL,
                 json={
-                    "model": embedding_model,
+                    "model": EMBEDDING_MODEL,
                     "input": text
                 },
                 headers={
-                    "Authorization": f"Bearer {API_KEY}",
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
                     "Content-Type": "application/json"
-                },
+                }
             )
             if response.status_code != 200:
-                print(f"Failed to generate embedding for text: {text} :: error: {response.json()}")
+                print("Error While Generating Embeddings", response.text)
                 return None
-
+            print(f"Embeddings Generated Successfully for: {text}")
             return response.json()["data"][0]["embedding"]
         except Exception as e:
-            print(f"Failed to generate embedding for text: {text} :: error: {str(e)}")
+            print(f"Error getting embedding: {e}")
             return None

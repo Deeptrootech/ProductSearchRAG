@@ -1,46 +1,59 @@
-import os
+"""Simple FastAPI app."""
 from fastapi import FastAPI, UploadFile, File
 import shutil
+import os
 
-from openrouter.openrouter_for_embeddings import EmbeddingService
-from utils.read_csv import FileProcessor
+from services.FileProcess.file_processor import FileProcessor
+from services.VectorDB.vector_store import VectorStore
+from services.embedding_service import EmbeddingService
+from services.llm_service import LLMService
 
 app = FastAPI()
+vector_store = VectorStore()
+llm_service = LLMService()
+file_processor = FileProcessor()
+embedding_service = EmbeddingService()
 
-processor = FileProcessor()
-embedder = EmbeddingService()
-UPLOAD_DIR = "uploads"
+UPLOAD_DIR = "data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
 @app.get("/")
-async def root():
-    return {"message": "Hello World"}
+def home():
+    return {"message": "Product Search API"}
 
 
-@app.post("/upload/")
-async def file_upload(file: UploadFile = File(...)):
+@app.post("/upload")
+def upload_file(file: UploadFile = File(...)):
+    """Upload and process CSV file."""
+    # Save file in upload directory
     file_path = f"{UPLOAD_DIR}/{file.filename}"
-
-    # save file
     with open(file_path, "wb") as f:
         shutil.copyfileobj(file.file, f)
 
-    # process file → text
-    documents = processor.process_upload(file_path)
+    # Process & store products into vector databse with embeddings.
+    products = file_processor.process_upload(file_path)
+    vector_store.insert_products(products)
 
-    # embeddings
-    results = generate_and_save_embeddings(documents)
-
-    return results
+    return {"status": "success", "products_processed": len(products)}
 
 
-@app.post("/ask/")
-async def ask(query: str):
-    query_embedding = embedder.generate_embedding(query)
+@app.post("/search")
+def search(query: str, top_k: int = 5):
+    """
+    Search products.
+    This is a RAG (Retrieval Augmented Generation) system.
+    """
+    # Search from vector database
+    products = vector_store.similarity_search_for_asked_question(query, top_k)
 
-    # similarity search for query_embedding in our VectorDB stored document embeddings
-    similar_embeddings = db.search(query_embedding)
-    breakpoint()
-    model_response = ""
-    return model_response
+    # Get recommendation
+    product_context = "\n".join([f"- {p['product_name']}: ${p['price']}" for p in products])
+    recommendation = llm_service.get_response(query, product_context)
+
+    return {
+        "query": query,
+        "products": products,
+        "recommendation": recommendation,
+        "total": len(products)
+    }

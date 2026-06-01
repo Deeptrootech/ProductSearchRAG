@@ -4,7 +4,6 @@ import pandas as pd
 class FileProcessor:
 
     def read_file(self, file_path):
-        """Read CSV or Excel file."""
 
         if file_path.endswith(".csv"):
             return pd.read_csv(file_path)
@@ -12,10 +11,9 @@ class FileProcessor:
         if file_path.endswith(".xlsx"):
             return pd.read_excel(file_path)
 
-        raise ValueError("Unsupported file type")
+        raise ValueError("Unsupported file")
 
     def clean_dataframe(self, df):
-        """Remove null values and duplicates."""
 
         df = df.fillna("")
         df = df.drop_duplicates()
@@ -23,7 +21,6 @@ class FileProcessor:
         return df
 
     def row_to_text(self, row):
-        """Convert dataframe row into searchable text."""
 
         return " | ".join(
             f"{column}: {value}"
@@ -32,23 +29,22 @@ class FileProcessor:
         )
 
     def process_upload(self, file_path):
-        """
-        Read file and return structured products
-        + combined searchable text.
-        """
 
         df = self.read_file(file_path)
         df = self.clean_dataframe(df)
 
         products = []
 
-        for _, row in df.iterrows():
+        for idx, row in df.iterrows():
 
             row_dict = row.to_dict()
 
             combined_text = self.row_to_text(row)
 
             row_dict["combined_text"] = combined_text
+
+            if "product_id" not in row_dict:
+                row_dict["product_id"] = idx + 1
 
             products.append(row_dict)
 
