@@ -2,6 +2,7 @@ import pandas as pd
 
 
 class FileProcessor:
+
     def read_file(self, file_path):
         """Read CSV or Excel file."""
 
@@ -22,7 +23,7 @@ class FileProcessor:
         return df
 
     def row_to_text(self, row):
-        """Convert dataframe row into text."""
+        """Convert dataframe row into searchable text."""
 
         return " | ".join(
             f"{column}: {value}"
@@ -31,17 +32,24 @@ class FileProcessor:
         )
 
     def process_upload(self, file_path):
-        """Read file and convert rows into text."""
+        """
+        Read file and return structured products
+        + combined searchable text.
+        """
 
         df = self.read_file(file_path)
         df = self.clean_dataframe(df)
 
-        documents = []
+        products = []
 
         for _, row in df.iterrows():
-            text = self.row_to_text(row)
 
-            if text:
-                documents.append(text)
+            row_dict = row.to_dict()
 
-        return documents
+            combined_text = self.row_to_text(row)
+
+            row_dict["combined_text"] = combined_text
+
+            products.append(row_dict)
+
+        return products

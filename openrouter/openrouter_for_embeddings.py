@@ -33,26 +33,3 @@ class EmbeddingService:
         except Exception as e:
             print(f"Failed to generate embedding for text: {text} :: error: {str(e)}")
             return None
-
-    def generate_and_save_embeddings(self, document):
-        """Generate embeddings for all documents."""
-
-        results = []
-
-        for index, text in enumerate(document):
-            embedding = self.generate_embedding(text)
-            if not embedding:
-                continue
-            # save to vector DB
-            db.add(
-                data_id=index + 1,
-                text=text,
-                embedding=embedding
-            )
-
-            results.append(text)
-
-        return {
-            "inserted": len(results),
-            "sample": results[:3]
-        }

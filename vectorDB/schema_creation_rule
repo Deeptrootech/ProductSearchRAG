@@ -1,0 +1,16 @@
+Is data tabular?
+        │
+        ├─ YES
+        │     └─ One row = One embedding
+        │
+        └─ NO
+              │
+              ├─ Is it a document/PDF?
+              │
+              ├─ YES
+              │      └─ Chunk + overlap
+              │
+              └─ NO
+                     └─ Find smallest meaningful entity
+                         and embed that
+

@@ -30,7 +30,7 @@ async def file_upload(file: UploadFile = File(...)):
     documents = processor.process_upload(file_path)
 
     # embeddings
-    results = embedder.generate_and_save_embeddings(documents)
+    results = generate_and_save_embeddings(documents)
 
     return results
 
