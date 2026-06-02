@@ -15,14 +15,14 @@ from config import (
     LLM_MODEL,
     OPENROUTER_API_KEY
 )
-from services.prompt import llm_prompt
+from services.prompt import SYSTEM_PROMPT
 
 
 class LLMService:
 
     def get_response(self, user_asked_input, context=""):
         try:
-            messages = [{"role": "system", "content": llm_prompt}]
+            messages = [{"role": "system", "content": SYSTEM_PROMPT}]
             if context:
                 messages.append({"role": "system", "content": context})
             messages.append({"role": "user", "content": user_asked_input})

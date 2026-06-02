@@ -7,6 +7,7 @@ from services.FileProcess.file_processor import FileProcessor
 from services.VectorDB.vector_store import VectorStore
 from services.embedding_service import EmbeddingService
 from services.llm_service import LLMService
+from services.utils import format_product_context
 
 app = FastAPI()
 vector_store = VectorStore()
@@ -47,8 +48,8 @@ def search(query: str, top_k: int = 5):
     # Search from vector database
     products = vector_store.similarity_search_for_asked_question(query, top_k)
 
-    # Get recommendation
-    product_context = "\n".join([f"- {p['product_name']}: ${p['price']}" for p in products])
+    # Get recommendation with formatted context
+    product_context = format_product_context(products)
     recommendation = llm_service.get_response(query, product_context)
 
     return {

@@ -1,6 +1,6 @@
 from pymilvus import MilvusClient
 
-from config import MILVUS_URI, DATABASE_NAME, COLLECTION_NAME, VECTOR_DIMENSION, TOP_K
+from config import MILVUS_URL, DATABASE_NAME, COLLECTION_NAME, VECTOR_DIMENSION, TOP_K
 
 from services.embedding_service import EmbeddingService
 
@@ -8,7 +8,7 @@ from services.embedding_service import EmbeddingService
 class VectorStore:
 
     def __init__(self):
-        self.client = MilvusClient(uri=MILVUS_URI)
+        self.client = MilvusClient(uri=MILVUS_URL)
         self.embedding_service = EmbeddingService()
         sample_embedding = self.embedding_service.get_embedding("test")
         self.vector_dimension = len(sample_embedding)
