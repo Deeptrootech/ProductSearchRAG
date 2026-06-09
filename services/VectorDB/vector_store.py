@@ -1,7 +1,21 @@
+"""
+************** architecture **************
+Database
+    ↓
+Schema
+    ↓
+AUTOINDEX (COSINE)
+    ↓
+Collection
+    ↓
+Load Collection
+    ↓
+Insert Products
+    ↓
+Vector Search
+"""
 from pymilvus import MilvusClient, DataType
-
 from config import MILVUS_URL, DATABASE_NAME, COLLECTION_NAME, VECTOR_DIMENSION, TOP_K
-
 from services.embedding_service import EmbeddingService
 
 
@@ -26,14 +40,20 @@ class VectorStore:
         self.create_database()
 
         # --------------------------------------------------
-        # Create collection
-        # --------------------------------------------------
-        self.create_collection()
-
-        # --------------------------------------------------
         # Create schema design
         # --------------------------------------------------
-        self.create_schema()
+        schema = self.create_schema_and_add_fields()
+
+        # --------------------------------------------------
+        # Create schema index
+        # --------------------------------------------------
+        index_params = self.create_index()
+
+        # --------------------------------------------------
+        # Create collection
+        # --------------------------------------------------
+        self.create_collection(schema, index_params)
+        self.load_collection()
 
     def create_database(self):
         databases = self.client.list_databases()
@@ -45,29 +65,97 @@ class VectorStore:
             print("## DB already exists")
         self.client.use_database(DATABASE_NAME)
 
-    def create_collection(self):
+    def create_collection(self, schema, index_params):
         if self.client.has_collection(COLLECTION_NAME):
             info = self.client.describe_collection(COLLECTION_NAME)
             print("## collection Already Exists:", info)
             return
         else:
-            # self.client.create_collection(
-            #     collection_name=COLLECTION_NAME,
-            #     schema=schema,
-            #     index_params=index_params
-            # )
-
             self.client.create_collection(
                 collection_name=COLLECTION_NAME,
-                dimension=self.vector_dimension,
-                metric_type="L2",
-                auto_id=True,
-                enable_dynamic_field=True
+                schema=schema,
+                index_params=index_params,
             )
-            print(f"## Collection '{COLLECTION_NAME}' created successfully.")
+            print(f"Collection '{COLLECTION_NAME}' created successfully.")
 
-    def create_schema(self):
-        ...
+    def load_collection(self):
+        try:
+            self.client.load_collection(COLLECTION_NAME)
+            print(f"Collection '{COLLECTION_NAME}' loaded.")
+        except Exception as e:
+            print(f"Load collection failed: {e}")
+
+    def create_schema_and_add_fields(self):
+        schema = self.client.create_schema(
+            auto_id=True,
+            enable_dynamic_field=False,
+        )
+
+        schema.add_field(
+            field_name="id",
+            datatype=DataType.INT64,
+            is_primary=True,
+        )
+
+        schema.add_field(
+            field_name="vector",
+            datatype=DataType.FLOAT_VECTOR,
+            dim=self.vector_dimension,
+        )
+
+        schema.add_field(
+            field_name="product_id",
+            datatype=DataType.VARCHAR,
+            max_length=100,
+        )
+
+        schema.add_field(
+            field_name="product_name",
+            datatype=DataType.VARCHAR,
+            max_length=500,
+        )
+
+        schema.add_field(
+            field_name="category",
+            datatype=DataType.VARCHAR,
+            max_length=200,
+        )
+
+        schema.add_field(
+            field_name="price",
+            datatype=DataType.FLOAT,
+        )
+
+        schema.add_field(
+            field_name="features",
+            datatype=DataType.VARCHAR,
+            max_length=5000,
+        )
+
+        schema.add_field(
+            field_name="description",
+            datatype=DataType.VARCHAR,
+            max_length=10000,
+        )
+
+        schema.add_field(
+            field_name="combined_text",
+            datatype=DataType.VARCHAR,
+            max_length=30000,
+        )
+
+        return schema
+
+    def create_index(self):
+        index_params = self.client.prepare_index_params()
+
+        index_params.add_index(
+            field_name="vector",
+            metric_type="COSINE",
+            index_type="AUTOINDEX",
+        )
+
+        return index_params
 
     def insert_products(self, products):
         """
@@ -76,19 +164,22 @@ class VectorStore:
 
         data = []
         for product in products:
-            embedding = self.embedding_service.get_embedding(product["combined_text"])
+            try:
+                embedding = self.embedding_service.get_embedding(product["combined_text"])
 
-            if embedding:
-                data.append({
-                    "vector": embedding,
-                    "product_id": product.get("product_id"),
-                    "product_name": product.get("product_name", ""),
-                    "category": product.get("category", ""),
-                    "price": product.get("price", 0),
-                    "features": product.get("features", ""),
-                    "description": product.get("description", ""),
-                })
-
+                if embedding:
+                    data.append({
+                        "vector": embedding,
+                        "product_id": product.get("product_id"),
+                        "product_name": product.get("product_name", ""),
+                        "category": product.get("category", ""),
+                        "price": float(product.get("price", 0)),
+                        "features": product.get("features", ""),
+                        "description": product.get("description", ""),
+                        "combined_text": product.get("combined_text", ""),
+                    })
+            except Exception as e:
+                print(f"Embedding failed for {product.get('product_id')}: {e}")
         if not data:
             print("No products found")
             return
@@ -99,36 +190,45 @@ class VectorStore:
         """
         Search for similar embeddings from vector db and return top-k results.
         """
-        query_embedding = self.embedding_service.get_embedding(query)
-        if not query_embedding:
-            return {"error": "Failed to get embedding"}
+        try:
+            query_embedding = self.embedding_service.get_embedding(query)
+            if not query_embedding:
+                return {"error": "Failed to get embedding"}
 
-        results = self.client.search(
-            collection_name=COLLECTION_NAME,
-            data=[query_embedding],
-            limit=top_k,
-            output_fields=[
-                "product_id",
-                "product_name",
-                "category",
-                "price",
-                "features",
-                "description"
-            ]
-        )
+            results = self.client.search(
+                collection_name=COLLECTION_NAME,
+                data=[query_embedding],
+                anns_field="vector",  # Approximate Nearest Neighbor Search -> tells Milvus which vector field to search against.
+                limit=top_k,
+                output_fields=[
+                    "product_id",
+                    "product_name",
+                    "category",
+                    "price",
+                    "features",
+                    "description",
+                    "combined_text"
+                ]
+            )
 
-        products = []
-        for result in results[0]:
-            entity = result["entity"]
+            products = []
+            for result in results[0]:
+                entity = result.get("entity", {})
 
-            products.append({
-                "product_id": entity["product_id"],
-                "product_name": entity["product_name"],
-                "category": entity["category"],
-                "price": entity["price"],
-                "features": entity["features"],
-                "description": entity["description"],
-                "score": result["distance"]
-            })
+                products.append(
+                    {
+                        "product_id": entity.get("product_id"),
+                        "product_name": entity.get("product_name"),
+                        "category": entity.get("category"),
+                        "price": entity.get("price"),
+                        "features": entity.get("features"),
+                        "description": entity.get("description"),
+                        "combined_text": entity.get("combined_text"),
+                        "similarity_score": result.get("distance"),
+                    }
+                )
 
-        return products
+            return products
+        except Exception as e:
+            print(f"Error in similarity search: {str(e)}")
+            return []

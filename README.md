@@ -31,7 +31,18 @@ docker-compose up -d
 
 **API Server:**
 ```bash
-python app.py
+fastapi app:
+- uvicorn main:app --reload
+- http://127.0.0.1:8000
+
+streamlit:
+- streamlit run streamlit_app.py
+- http://localhost:8501/
+
+attu
+- docker compose up
+- http://127.0.0.1:3001/
+
 ```
 
 **Streamlit UI:**
