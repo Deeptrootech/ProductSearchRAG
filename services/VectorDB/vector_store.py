@@ -15,11 +15,23 @@ Insert Products
 Vector Search
 """
 from pymilvus import MilvusClient, DataType
-from config import MILVUS_URL, DATABASE_NAME, COLLECTION_NAME, VECTOR_DIMENSION, TOP_K
+
+
+from config import MILVUS_URL, DATABASE_NAME, COLLECTION_NAME, TOP_K
 from services.embedding_service import EmbeddingService
 
 
 class VectorStore:
+    """
+    A proper production implementation should:
+        - Create database
+        - Create schema
+        - Create index
+        - Create collection using schema + index
+        - Load collection
+        - Batch insert embeddings
+        - Search with HNSW + COSINE
+    """
 
     def __init__(self):
         self.client = MilvusClient(uri=MILVUS_URL)
@@ -32,11 +44,9 @@ class VectorStore:
 
     def setup(self):
         """
-        Setup vector databse, collection and index if missing.
+        Setup vector database, collection and index if missing.
         """
-        # --------------------------------------------------
         # Create & use Database
-        # --------------------------------------------------
         self.create_database()
 
         # --------------------------------------------------
@@ -159,7 +169,7 @@ class VectorStore:
 
     def insert_products(self, products):
         """
-        Genarate embeddings of each raw and insert into database along with metadata.
+        Generate embeddings of each raw and insert into database along with metadata.
         """
 
         data = []
@@ -199,6 +209,10 @@ class VectorStore:
                 collection_name=COLLECTION_NAME,
                 data=[query_embedding],
                 anns_field="vector",  # Approximate Nearest Neighbor Search -> tells Milvus which vector field to search against.
+                search_params={
+                    "metric_type": "COSINE",
+                    "params": {"nprobe": 10}
+                },
                 limit=top_k,
                 output_fields=[
                     "product_id",
@@ -224,7 +238,7 @@ class VectorStore:
                         "features": entity.get("features"),
                         "description": entity.get("description"),
                         "combined_text": entity.get("combined_text"),
-                        "similarity_score": result.get("distance"),
+                        "score": result.get("distance"),
                     }
                 )
 

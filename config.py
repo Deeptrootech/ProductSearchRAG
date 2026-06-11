@@ -19,7 +19,6 @@ LLM_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
 MILVUS_URL = "http://localhost:19530"
 DATABASE_NAME = "ProductSearchRAG"
 COLLECTION_NAME = "products"
-VECTOR_DIMENSION = 1024  # TODO: get this dynamically
 
 # Search
 TOP_K = 5
