@@ -170,7 +170,7 @@ class VectorStore:
                 if embedding:
                     data.append({
                         "vector": embedding,
-                        "product_id": product.get("product_id"),
+                        "product_id": str(product.get("product_id")),
                         "product_name": product.get("product_name", ""),
                         "category": product.get("category", ""),
                         "price": float(product.get("price", 0)),
