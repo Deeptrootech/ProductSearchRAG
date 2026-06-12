@@ -52,9 +52,4 @@ def search(query: str, top_k: int = 5):
     product_context = format_product_context(products)
     recommendation = llm_service.get_response(query, product_context)
 
-    return {
-        "query": query,
-        "products": products,
-        "recommendation": recommendation,
-        "total": len(products)
-    }
+    return recommendation

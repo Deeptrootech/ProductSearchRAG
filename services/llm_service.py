@@ -9,31 +9,65 @@ How it works:
 Benefits of using OpenRouter API: No local GPU/CPU usage for LLMs
 """
 import requests
-
+import json
 from config import (
     LLM_URL,
     LLM_MODEL,
     OPENROUTER_API_KEY
 )
-from services.prompt import SYSTEM_PROMPT
+from services.prompt import SYSTEM_PROMPT, RECOMMENDATION_PROMPT
 
 
 class LLMService:
 
     def get_response(self, user_asked_input, context=""):
         try:
-            messages = [{"role": "system", "content": SYSTEM_PROMPT}]
-            if context:
-                messages.append({"role": "system", "content": context})
-            messages.append({"role": "user", "content": user_asked_input})
+            messages = [
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": RECOMMENDATION_PROMPT.format(
+                        query=user_asked_input,
+                        retrieved_context=context
+                    )
+                }
+            ]
+
+            payload = {
+                "model": LLM_MODEL,
+                "messages": messages,
+                "temperature": 0.3,
+                "response_format": {
+                    "type": "json_object"
+                }
+            }
 
             response = requests.post(
                 LLM_URL,
-                json={"model": LLM_MODEL, "messages": messages},
-                headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}", "Content-Type": "application/json"}
+                json=payload,
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+                timeout=60
             )
-            print(response.json())
-            return response.json()['choices'][0]['message']['content']
+
+            response.raise_for_status()
+            llm_content = response.json()['choices'][0]['message']['content']
+            return json.loads(llm_content)
+        except json.JSONDecodeError:
+            print("LLM returned invalid JSON")
+            return {
+                "answer": "Unable to generate recommendations.",
+                "products": []
+            }
         except Exception as e:
-            print(f"Error getting LLM response: {e}")
-            return None
+            print(f"LLM Error: {e}")
+
+            return {
+                "answer": "Something went wrong while generating recommendations.",
+                "products": []
+            }

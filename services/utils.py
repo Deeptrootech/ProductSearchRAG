@@ -1,16 +1,21 @@
-def format_product_context(products):
-    if not products:
-        return "No products found."
+import json
 
-    context = ""
-    for idx, product in enumerate(products, start=1):
-        context += f"""
-                    Product {idx}
-                    Name: {product.get('product_name')}
-                    Category: {product.get('category')}
-                    Price: ${product.get('price')}
-                    Features: {product.get('features')}
-                    Description: {product.get('description')}
-                    Similarity Score: {product.get('score')}
-                    """
-    return context
+
+def format_product_context(products):
+    cleaned_products = []
+
+    for p in products:
+        cleaned_products.append({
+            "product_name": p.get("product_name"),
+            "category": p.get("category"),
+            "price": p.get("price"),
+            "features": p.get("features"),
+            "description": p.get("description"),
+            "score": p.get("score")
+        })
+
+    return json.dumps(
+        cleaned_products,
+        indent=2,
+        ensure_ascii=False
+    )
