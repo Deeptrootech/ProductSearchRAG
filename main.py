@@ -47,6 +47,7 @@ def search(query: str, top_k: int = 5):
     """
     # Search from vector database
     products = vector_store.similarity_search_for_asked_question(query, top_k)
+    # TODO: need to do recommendations search here.
 
     # Get recommendation with formatted context
     product_context = format_product_context(products)
