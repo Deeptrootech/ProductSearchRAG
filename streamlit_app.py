@@ -25,54 +25,121 @@ if "chat" not in st.session_state:
 def parse_price(price):
     try:
         return float(str(price).replace("$", "").replace("USD", "").strip())
-    except:
-        return 0
+    except Exception:
+        return 0.0
 
 
 # -------------------
-# PRODUCT CARD (STREAMLIT VERSION - NO HTML ISSUES)
+# PRODUCT CARD
 # -------------------
-def render_product(p):
-    price = parse_price(p.get("price", 0))
+def render_product(product):
+    price = parse_price(product.get("price", 0))
 
-    with st.container():
-        st.markdown("### 🛍️ " + p.get("product_name", "Unknown Product"))
+    product_name = product.get(
+        "product_name",
+        "Unknown Product"
+    )
 
-        col1, col2 = st.columns([1, 1])
+    with st.expander(
+            f"🛍️ {product_name} - ${price:.2f}",
+            expanded=True
+    ):
+
+        col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown(f"💰 **Price:** ${price:,.0f}")
-            st.markdown(f"📂 **Category:** {p.get('category', 'N/A')}")
-            st.markdown(f"⭐ **Rating:** {p.get('rating', 'N/A')}")
+            st.markdown(
+                f"💰 **Price:** ${price:.2f}"
+            )
+
+            st.markdown(
+                f"📂 **Category:** "
+                f"{product.get('category', 'N/A')}"
+            )
+
+            score = product.get("score")
+
+            if score is not None:
+                try:
+                    st.caption(
+                        f"Relevance Score: "
+                        f"{float(score):.3f}"
+                    )
+                except Exception:
+                    pass
 
         with col2:
-            st.markdown("### 🔖 Features")
-            for f in p.get("features", []):
-                st.markdown(f"- {f}")
 
-        st.markdown("---")
+            features = product.get(
+                "features",
+                []
+            )
 
-        col3, col4 = st.columns(2)
+            if isinstance(features, str):
+                features = [
+                    item.strip()
+                    for item in features.split(",")
+                    if item.strip()
+                ]
 
-        with col3:
-            st.markdown("### 👍 Pros")
-            for x in p.get("pros", []):
-                st.success(x)
+            if features:
+                st.markdown("### 🔖 Features")
 
-        with col4:
-            st.markdown("### 👎 Cons")
-            for x in p.get("cons", []):
-                st.error(x)
+                for feature in features:
+                    st.markdown(
+                        f"- {feature}"
+                    )
 
-        st.markdown("### 💡 Why Choose")
-        for x in p.get("why_choose", []):
-            st.info(x)
+        pros = product.get("pros", [])
+        cons = product.get("cons", [])
+        why_choose = product.get(
+            "why_choose",
+            []
+        )
 
-        if p.get("description"):
-            st.markdown("### 📝 Description")
-            st.write(p.get("description"))
+        if pros or cons:
 
-        st.markdown("---")
+            col3, col4 = st.columns(2)
+
+            with col3:
+
+                if pros:
+                    st.markdown(
+                        "### 👍 Pros"
+                    )
+
+                    for item in pros:
+                        st.success(item)
+
+            with col4:
+
+                if cons:
+                    st.markdown(
+                        "### 👎 Cons"
+                    )
+
+                    for item in cons:
+                        st.error(item)
+
+        if why_choose:
+
+            st.markdown(
+                "### 💡 Why Choose"
+            )
+
+            for item in why_choose:
+                st.info(item)
+
+        description = product.get(
+            "description",
+            ""
+        )
+
+        if description:
+            st.markdown(
+                "### 📝 Description"
+            )
+            st.write(description)
 
 
 # -------------------
@@ -81,10 +148,23 @@ def render_product(p):
 with st.sidebar:
     st.title("🛍️ Product AI")
 
-    uploaded_file = st.file_uploader("Upload CSV Dataset", type=["csv"])
+    if st.button("🗑️ Clear Chat"):
+        st.session_state.chat = []
+        st.rerun()
+
+    st.divider()
+
+    uploaded_file = st.file_uploader(
+        "Upload CSV Dataset",
+        type=["csv"]
+    )
 
     if uploaded_file:
-        if st.button("Upload"):
+
+        if st.button(
+                "Upload Dataset"
+        ):
+
             files = {
                 "file": (
                     uploaded_file.name,
@@ -93,79 +173,165 @@ with st.sidebar:
                 )
             }
 
-            res = requests.post(f"{API_URL}/upload", files=files)
+            try:
+                response = requests.post(
+                    f"{API_URL}/upload",
+                    files=files
+                )
 
-            if res.status_code == 200:
-                st.success("Uploaded Successfully")
-            else:
-                st.error("Upload Failed")
+                if response.status_code == 200:
+                    st.success(
+                        "Uploaded Successfully"
+                    )
+                else:
+                    st.error(
+                        "Upload Failed"
+                    )
+
+            except Exception as e:
+                st.error(str(e))
+
+    if st.session_state.chat:
+
+        st.divider()
+
+        st.subheader(
+            "Recent Searches"
+        )
+
+        recent_queries = [
+            msg["content"]
+            for msg in st.session_state.chat
+            if msg["role"] == "user"
+        ][-5:]
+
+        for query in reversed(
+                recent_queries
+        ):
+            st.caption(query)
 
 # -------------------
 # TITLE
 # -------------------
-st.title("💬 Product Search Assistant")
+st.title(
+    "💬 Product Search Assistant"
+)
 
-st.markdown("Ask anything like *'best laptop under 1000$'*")
+st.markdown(
+    "Ask anything like "
+    "**'best laptop under 1000$'**"
+)
 
 st.divider()
 
 # -------------------
-# CHAT DISPLAY
+# CHAT HISTORY
 # -------------------
-for msg in st.session_state.chat:
+for message in st.session_state.chat:
 
-    if msg["role"] == "user":
-        with st.chat_message("user"):
-            st.write(msg["content"])
+    if message["role"] == "user":
+
+        with st.chat_message(
+                "user"
+        ):
+            st.write(
+                message["content"]
+            )
 
     else:
-        with st.chat_message("assistant"):
-            st.write(msg.get("answer", ""))
 
-            for p in msg.get("products", []):
-                render_product(p)
+        with st.chat_message(
+                "assistant"
+        ):
+
+            answer = message.get(
+                "answer",
+                ""
+            )
+
+            if answer:
+                st.write(answer)
+
+            products = message.get(
+                "products",
+                []
+            )
+
+            if products:
+                st.caption(
+                    f"Found "
+                    f"{len(products)} "
+                    f"matching products"
+                )
+
+            for product in products:
+                render_product(
+                    product
+                )
 
 # -------------------
-# INPUT
+# CHAT INPUT
 # -------------------
-query = st.chat_input("Search products...")
+query = st.chat_input(
+    "Search products..."
+)
 
 if query:
 
-    # user message
     st.session_state.chat.append({
         "role": "user",
         "content": query
     })
 
-    # API call
-    with st.spinner("Finding best products..."):
+    with st.spinner(
+            "Finding products..."
+    ):
+
         try:
+
             response = requests.post(
                 f"{API_URL}/search",
-                params={"query": query}
+                params={
+                    "user_query": query
+                },
+                timeout=60
             )
 
             if response.status_code == 200:
+
                 data = response.json()
 
                 st.session_state.chat.append({
                     "role": "assistant",
-                    "answer": data.get("answer", ""),
-                    "products": data.get("products", [])
+                    "answer": data.get(
+                        "answer",
+                        ""
+                    ),
+                    "products": data.get(
+                        "products",
+                        []
+                    )
                 })
 
             else:
+
                 st.session_state.chat.append({
                     "role": "assistant",
-                    "answer": "Error fetching results",
+                    "answer": (
+                        f"API Error "
+                        f"({response.status_code})"
+                    ),
                     "products": []
                 })
 
         except Exception as e:
+
             st.session_state.chat.append({
                 "role": "assistant",
-                "answer": f"Server error: {str(e)}",
+                "answer": (
+                    f"Server Error: "
+                    f"{str(e)}"
+                ),
                 "products": []
             })
 

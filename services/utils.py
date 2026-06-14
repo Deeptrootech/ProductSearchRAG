@@ -1,6 +1,23 @@
 import json
 
 
+def build_intent_filter(intent):
+    filters = []
+
+    if intent.get("min_price", 0) > 0:
+        filters.append(f"price >= {intent['min_price']}")
+
+    if intent.get("max_price", 0) > 0:
+        filters.append(f"price <= {intent['max_price']}")
+
+    if intent.get("category"):
+        filters.append(
+            f'category == "{intent["category"]}"'
+        )
+
+    return " and ".join(filters)
+
+
 def format_product_context(products):
     cleaned_products = []
 

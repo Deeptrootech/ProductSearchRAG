@@ -2,16 +2,18 @@
 from fastapi import FastAPI, UploadFile, File
 import shutil
 import os
-
+import json
 from services.FileProcess.file_processor import FileProcessor
 from services.VectorDB.vector_store import VectorStore
 from services.embedding_service import EmbeddingService
+from services.intent_service import IntentService
 from services.llm_service import LLMService
-from services.utils import format_product_context
+from services.utils import format_product_context, build_intent_filter
 
 app = FastAPI()
 vector_store = VectorStore()
 llm_service = LLMService()
+intent_service = IntentService()
 file_processor = FileProcessor()
 embedding_service = EmbeddingService()
 
@@ -32,7 +34,7 @@ def upload_file(file: UploadFile = File(...)):
     with open(file_path, "wb") as f:
         shutil.copyfileobj(file.file, f)
 
-    # Process & store products into vector databse with embeddings.
+    # Process & store products into vector database with embeddings.
     products = file_processor.process_upload(file_path)
     vector_store.insert_products(products)
 
@@ -40,17 +42,24 @@ def upload_file(file: UploadFile = File(...)):
 
 
 @app.post("/search")
-def search(query: str, top_k: int = 5):
+def search(user_query: str, top_k: int = 5):
     """
     Search products.
     This is a RAG (Retrieval Augmented Generation) system.
     """
+    intent = intent_service.extract_intent(user_query)
+
+    intent = json.loads(intent)
+    search_text = intent["search_text"]
+
+    filter_expr = build_intent_filter(intent)
+
+
     # Search from vector database
-    products = vector_store.similarity_search_for_asked_question(query, top_k)
-    # TODO: need to do recommendations search here.
+    products = vector_store.similarity_search_for_asked_question(search_text, filter_expr, top_k)
 
     # Get recommendation with formatted context
     product_context = format_product_context(products)
-    recommendation = llm_service.get_response(query, product_context)
+    recommendation = llm_service.get_response(user_query, product_context)
 
     return recommendation

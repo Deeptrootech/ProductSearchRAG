@@ -16,7 +16,6 @@ Vector Search
 """
 from pymilvus import MilvusClient, DataType
 
-
 from config import MILVUS_URL, DATABASE_NAME, COLLECTION_NAME, TOP_K
 from services.embedding_service import EmbeddingService
 
@@ -196,7 +195,7 @@ class VectorStore:
 
         self.client.insert(collection_name=COLLECTION_NAME, data=data)
 
-    def similarity_search_for_asked_question(self, query, top_k=TOP_K):
+    def similarity_search_for_asked_question(self, query, filter_expr=None, top_k=TOP_K):
         """
         Search for similar embeddings from vector db and return top-k results.
         """
@@ -208,10 +207,11 @@ class VectorStore:
             results = self.client.search(
                 collection_name=COLLECTION_NAME,
                 data=[query_embedding],
-                anns_field="vector",  # Approximate Nearest Neighbor Search -> tells Milvus which vector field to search against.
+                anns_field="vector",
+                filter=filter_expr,
+                # Approximate Nearest Neighbor Search -> tells Milvus which vector field to search against.
                 search_params={
                     "metric_type": "COSINE",
-                    "params": {"nprobe": 10}
                 },
                 limit=top_k,
                 output_fields=[
