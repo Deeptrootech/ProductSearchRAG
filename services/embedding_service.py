@@ -29,9 +29,9 @@ class EmbeddingService:
             )
             if response.status_code != 200:
                 print("Error While Generating Embeddings", response.text)
-                return None
+                return {}
             print(f"Embeddings Generated Successfully for: {text}")
             return response.json()["data"][0]["embedding"]
         except Exception as e:
             print(f"Error getting embedding: {e}")
-            return None
+            return {}

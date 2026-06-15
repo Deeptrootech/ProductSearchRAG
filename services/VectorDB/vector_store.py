@@ -35,9 +35,8 @@ class VectorStore:
     def __init__(self):
         self.client = MilvusClient(uri=MILVUS_URL)
         self.embedding_service = EmbeddingService()
-
-        sample_embedding = self.embedding_service.get_embedding("test")
-        self.vector_dimension = len(sample_embedding)
+        # sample_embedding = self.embedding_service.get_embedding("test")
+        self.vector_dimension = 2048
 
         self.setup()
 
@@ -76,8 +75,7 @@ class VectorStore:
 
     def create_collection(self, schema, index_params):
         if self.client.has_collection(COLLECTION_NAME):
-            info = self.client.describe_collection(COLLECTION_NAME)
-            print("## collection Already Exists:", info)
+            print("## collection Already Exists:")
             return
         else:
             self.client.create_collection(
