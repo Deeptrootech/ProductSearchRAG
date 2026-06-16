@@ -22,11 +22,16 @@ class FileProcessor:
 
     def row_to_text(self, row):
 
-        return " | ".join(
-            f"{column}: {value}"
-            for column, value in row.items()
-            if str(value).strip()
-        )
+        return f"""
+            Product: {row.get('product_name', '')}
+            Brand: {row.get('brand', '')}
+            Category: {row.get('category', '')}
+            Features: {row.get('features', '')}
+            Description: {row.get('description', '')}
+            Rating: {row.get('rating', '')}
+            Stock: {row.get('stock', '')}
+            Price: {row.get('price', '')}
+            """.strip()
 
     def process_upload(self, file_path):
 

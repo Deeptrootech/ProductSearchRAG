@@ -13,7 +13,7 @@ EMBEDDING_MODEL = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
 
 # Chat / LLM
 LLM_URL = "https://openrouter.ai/api/v1/chat/completions"
-LLM_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
+LLM_MODEL = "openai/gpt-oss-120b:free"
 
 # Milvus
 MILVUS_URL = "http://localhost:19530"

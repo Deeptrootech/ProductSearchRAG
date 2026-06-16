@@ -26,6 +26,7 @@ class IntentService:
         if error_message := response.json().get("error"):
             return error_message.get("message", "Unknown error"), False
         intent = response.json()["choices"][0]["message"]["content"]
+        print(f"++++++++++++++++++++++++++++++++++= {intent}")
         intent = json.loads(intent)
 
         # SAFE GUARD (IMPORTANT)

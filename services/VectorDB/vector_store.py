@@ -123,6 +123,12 @@ class VectorStore:
         )
 
         schema.add_field(
+            field_name="brand",
+            datatype=DataType.VARCHAR,
+            max_length=200,
+        )
+
+        schema.add_field(
             field_name="category",
             datatype=DataType.VARCHAR,
             max_length=200,
@@ -131,6 +137,16 @@ class VectorStore:
         schema.add_field(
             field_name="price",
             datatype=DataType.FLOAT,
+        )
+
+        schema.add_field(
+            field_name="rating",
+            datatype=DataType.FLOAT,
+        )
+
+        schema.add_field(
+            field_name="stock",
+            datatype=DataType.INT64,
         )
 
         schema.add_field(
@@ -148,7 +164,7 @@ class VectorStore:
         schema.add_field(
             field_name="combined_text",
             datatype=DataType.VARCHAR,
-            max_length=30000,
+            max_length=4000,
         )
 
         return schema
@@ -176,14 +192,17 @@ class VectorStore:
 
                 if embedding:
                     data.append({
-                        "vector": embedding,
                         "product_id": str(product.get("product_id")),
                         "product_name": product.get("product_name", ""),
+                        "brand": product.get("brand", ""),
                         "category": product.get("category", ""),
                         "price": float(product.get("price", 0)),
+                        "rating": float(product.get("rating", 0)),
+                        "stock": float(product.get("stock", 0)),
                         "features": product.get("features", ""),
                         "description": product.get("description", ""),
                         "combined_text": product.get("combined_text", ""),
+                        "vector": embedding,
                     })
             except Exception as e:
                 print(f"Embedding failed for {product.get('product_id')}: {e}")

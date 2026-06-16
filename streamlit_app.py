@@ -197,7 +197,7 @@ if query:
             response = requests.post(
                 f"{API_URL}/search",
                 params={"user_query": query},
-                timeout=60
+                timeout=300
             )
             if response.status_code == 200:
                 data = response.json()
