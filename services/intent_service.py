@@ -38,14 +38,12 @@ class IntentService:
                 "product_type": "",
                 "category": "",
                 "brand": "",
-                "min_price": 0,
-                "max_price": 0,
                 "required_features": [],
-                "sort_preference": ""
+                "filters": [],
+                "sort": {
+                    "field": "",
+                    "order": ""
+                }
             }
-
-        # SAFE GUARD (IMPORTANT)
-        if not intent.get("search_text"):
-            intent["search_text"] = query
 
         return intent, True

@@ -2,120 +2,70 @@ import json
 
 
 def apply_filters(products, intent):
-    """
-    Apply deterministic filters extracted from intent.
-
-    This function intentionally does NOT perform:
-    - semantic matching
-    - category inference
-    - feature inference
-    - ranking
-    - recommendation logic
-
-    Those should be handled by:
-    - embeddings/vector search
-    - LLM explanation layer
-    """
+    filters = intent.get("filters", [])
 
     filtered = []
-
-    brand = str(intent.get("brand", "")).strip().lower()
-    category = str(intent.get("category", "")).strip().lower()
-
-    min_price = intent.get("min_price", 0) or 0
-    max_price = intent.get("max_price", 0) or 0
-
-    required_features = [
-        str(f).strip().lower()
-        for f in intent.get("required_features", [])
-        if f
-    ]
-
     for product in products:
+        keep = True
+        for rule in filters:
+            field = rule.get("field")
+            operator = rule.get("operator")
+            value = rule.get("value")
 
-        # -----------------
-        # Price filter
-        # -----------------
-        price = float(product.get("price", 0) or 0)
+            product_value = product.get(field)
 
-        if min_price and price < min_price:
-            continue
+            if product_value is None:
+                break
 
-        if max_price and price > max_price:
-            continue
+            try:
 
-        # -----------------
-        # Brand filter
-        # -----------------
-        if brand:
-            product_name = str(
-                product.get("product_name", "")
-            ).lower()
+                if operator == "eq":
+                    keep = product_value == value
 
-            if brand not in product_name:
-                continue
+                elif operator == "neq":
+                    keep = product_value != value
 
-        # -----------------
-        # Category filter
-        # -----------------
-        if category:
-            product_category = str(
-                product.get("category", "")
-            ).lower()
+                elif operator == "gt":
+                    keep = product_value > value
 
-            if category != product_category:
-                continue
+                elif operator == "gte":
+                    keep = product_value >= value
 
-        # -----------------
-        # Feature filter
-        # -----------------
-        if required_features:
+                elif operator == "lt":
+                    keep = product_value < value
 
-            features_text = " ".join([
-                str(product.get("features", "")),
-                str(product.get("description", "")),
-            ]).lower()
+                elif operator == "lte":
+                    keep = product_value <= value
 
-            if not all(
-                    feature in features_text
-                    for feature in required_features
-            ):
-                continue
+                elif operator == "contains":
+                    keep = str(value).lower() in str(product_value).lower()
 
-        filtered.append(product)
-
+                else:
+                    keep = True
+            except Exception:
+                keep = False
+            if not keep:
+                break
+        if keep:
+            filtered.append(product)
     return filtered
 
 
 def apply_sort(products, intent):
-    """
-    Generic sorting based on intent.
 
-    Supported examples:
-    - price_asc
-    - price_desc
-    - score_desc
-    - score_asc
-    - rating_desc
-    - rating_asc
-    """
-    sort_preference = str(
-        intent.get("sort_preference", "")
-    ).strip().lower()
+    sort_config = intent.get("sort", {})
 
-    if not sort_preference:
-        return products
+    field = sort_config.get("field")
+    order = sort_config.get("order", "asc")
 
-    try:
-        field, order = sort_preference.rsplit("_", 1)
-    except ValueError:
+    if not field:
         return products
 
     reverse = order == "desc"
 
     return sorted(
         products,
-        key=lambda p: p.get(field, 0) or 0,
+        key=lambda p: p.get(field, 0),
         reverse=reverse
     )
 
@@ -127,6 +77,9 @@ def format_context(products):
         cleaned.append({
             "product_name": p.get("product_name"),
             "price": p.get("price"),
+            "rating": p.get("rating"),
+            "stock": p.get("stock"),
+            "brand": p.get("brand"),
             "category": p.get("category"),
             "features": p.get("features"),
             "description": p.get("description"),

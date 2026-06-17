@@ -238,6 +238,9 @@ class VectorStore:
                     "product_name",
                     "category",
                     "price",
+                    "rating",
+                    "stock",
+                    "brand",
                     "features",
                     "description",
                     "combined_text"
@@ -247,13 +250,15 @@ class VectorStore:
             products = []
             for result in results[0]:
                 entity = result.get("entity", {})
-
                 products.append(
                     {
                         "product_id": entity.get("product_id"),
                         "product_name": entity.get("product_name"),
                         "category": entity.get("category"),
                         "price": entity.get("price"),
+                        "rating": entity.get("rating"),
+                        "stock": entity.get("stock"),
+                        "brand": entity.get("brand"),
                         "features": entity.get("features"),
                         "description": entity.get("description"),
                         "combined_text": entity.get("combined_text"),

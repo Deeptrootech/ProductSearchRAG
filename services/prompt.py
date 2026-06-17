@@ -59,6 +59,9 @@ OUTPUT SCHEMA:
     {
       "product_name": "",
       "price": 0,
+      "rating": 0,
+      "stock": 0,
+      "brand": "",
       "category": "",
       "features": "",
       "description": ""
@@ -144,59 +147,112 @@ Return exactly one valid JSON object matching this schema:
   "product_type": "",
   "category": "",
   "brand": "",
-  "min_price": 0,
-  "max_price": 0,
   "required_features": [],
-  "sort_preference": ""
+  "filters": [],
+  "sort": {
+    "field": "",
+    "order": ""
+  }
 }
 
-TASK
+Filter object schema:
 
-Extract structured search constraints from the user's query.
+{
+  "field": "",
+  "operator": "",
+  "value": ""
+}
 
-Only extract information supported by the query itself.
+Supported operators:
 
-FIELD RULES
+eq
+neq
+gt
+gte
+lt
+lte
+contains
 
-- search_text:
-  Preserve the primary search intent and important constraints.
+Rules:
 
-- product_type:
-  Extract when explicitly stated.
+- search_text should preserve the user's primary search intent.
+- Extract product_type only if explicitly mentioned.
+- Extract category only if explicitly mentioned.
+- Extract brand only if explicitly mentioned.
+- Extract required_features only when explicitly stated.
+- Convert numeric and structured constraints into filters.
+- Convert ordering requests into sort.
 
-- category:
-  Extract when explicitly stated.
+Examples:
 
-- brand:
-  Extract when explicitly stated.
+User: laptops under 1000
 
-- min_price:
-  Extract when explicitly stated.
+{
+  "search_text": "laptops under 1000",
+  "product_type": "laptop",
+  "category": "",
+  "brand": "",
+  "required_features": [],
+  "filters": [
+    {
+      "field": "price",
+      "operator": "lte",
+      "value": 1000
+    }
+  ],
+  "sort": {
+    "field": "",
+    "order": ""
+  }
+}
 
-- max_price:
-  Extract when explicitly stated.
+User: products with stock greater than 100
 
-- required_features:
-  Extract explicitly requested requirements, characteristics,
-  capabilities, attributes, or constraints.
+{
+  "search_text": "products with stock greater than 100",
+  "product_type": "",
+  "category": "",
+  "brand": "",
+  "required_features": [],
+  "filters": [
+    {
+      "field": "stock",
+      "operator": "gte",
+      "value": 100
+    }
+  ],
+  "sort": {
+    "field": "",
+    "order": ""
+  }
+}
 
-- sort_preference:
-  Extract only when the query expresses a preference for ordering results.
+User: cheapest wireless mouse
 
-GENERAL RULES
+{
+  "search_text": "wireless mouse",
+  "product_type": "mouse",
+  "category": "",
+  "brand": "",
+  "required_features": ["wireless"],
+  "filters": [],
+  "sort": {
+    "field": "price",
+    "order": "asc"
+  }
+}
 
-- Do not invent information.
-- Do not infer information that is not present.
+General Rules:
+
 - Do not answer the query.
 - Do not retrieve products.
-- Do not rank products.
 - Do not recommend products.
 - Do not use external knowledge.
-- Populate fields only when supported by the query.
+- Do not infer information not present in the query.
+- Every field must always exist.
 - Use empty values when information is unavailable.
-- Every field must always be present.
 
-OUTPUT RULES
+Output Rules:
 
 - Return exactly one JSON object.
 - Return valid JSON only.
@@ -207,5 +263,5 @@ OUTPUT RULES
 - No reasoning.
 - No additional text.
 
-The output must be directly parseable by Python json.loads().
+The output must be parseable by Python json.loads().
 """
