@@ -14,10 +14,9 @@ class FileProcessor:
         raise ValueError("Unsupported file")
 
     def clean_dataframe(self, df):
-
+        df = df.dropna(how="all")
         df = df.fillna("")
         df = df.drop_duplicates()
-
         return df
 
     def row_to_text(self, row):

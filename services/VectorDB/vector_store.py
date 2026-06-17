@@ -169,6 +169,8 @@ class VectorStore:
 
         return schema
 
+    metric_type = "COSINE",
+
     def create_index(self):
         index_params = self.client.prepare_index_params()
 
@@ -198,7 +200,7 @@ class VectorStore:
                         "category": product.get("category", ""),
                         "price": float(product.get("price", 0)),
                         "rating": float(product.get("rating", 0)),
-                        "stock": float(product.get("stock", 0)),
+                        "stock": int(product.get("stock", 0)),
                         "features": product.get("features", ""),
                         "description": product.get("description", ""),
                         "combined_text": product.get("combined_text", ""),

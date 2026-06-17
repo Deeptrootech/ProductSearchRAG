@@ -64,7 +64,7 @@ def search(user_query: str, top_k: int = 5):
     # 2. RETRIEVAL from vector database (overfetch!)
     print(f"=================== # 2. RETRIEVAL from vector database (overfetch!")
     products = vector_store.similarity_search_for_asked_question(search_text, top_k=50)
-
+    print(f"++++++++++++++++++++ {products}")
     # 3. FILTERING (deterministic)
     print(f"=================== # 3. FILTERING (deterministic)")
     candidates = apply_filters(products, intent)
@@ -80,10 +80,10 @@ def search(user_query: str, top_k: int = 5):
     print(f"=================== # 6. FORMAT")
     context = format_context(candidates)
 
-    print(f"=================== {candidates}")
     # 7. FINAL LLM RESPONSE
     print(f"=================== # 7. FINAL LLM RESPONSE")
+    print(f"=======FINAL LLM RESPONSE============ {user_query} &&&&&&&&&&&&&&&&&&&&&&&&&&&&& {context}")
     reccomandation = llm_service.get_response(user_query, context)
-    print(f"+++++++++++++++++++++ {candidates}")
+    print(f"+++++++++++++++++++++ {reccomandation}")
 
     return reccomandation

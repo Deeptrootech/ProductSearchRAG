@@ -56,10 +56,11 @@ class LLMService:
             )
 
             response.raise_for_status()
+            print(f"+++++++++LLM+++++++++++ {response.json()}")
             llm_content = response.json()['choices'][0]['message']['content']
             return json.loads(llm_content)
-        except json.JSONDecodeError:
-            print("LLM returned invalid JSON")
+        except json.JSONDecodeError as e:
+            print("LLM returned invalid JSON : ", e)
             return {
                 "answer": "Unable to generate recommendations.",
                 "products": []

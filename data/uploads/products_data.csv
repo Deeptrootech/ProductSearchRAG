@@ -1,51 +1,539 @@
-product_id,product_name,category,price,features,description
-1,Wireless Mouse,Electronics,25.99,"ergonomic, 2.4GHz, optical",Smooth and responsive wireless mouse for office use
-2,Running Shoes,Sports,59.99,"lightweight, breathable, durable",Comfortable running shoes for daily jogging
-3,Smartphone,Electronics,399.99,"64GB, 4GB RAM, 12MP camera",Sleek smartphone with high performance and excellent camera
-4,Coffee Maker,Home Appliances,79.99,"programmable, 12-cup, auto-shutoff",Brew delicious coffee effortlessly
-5,Backpack,Travel,45.99,"waterproof, 20L, multiple pockets",Durable backpack suitable for travel and everyday use
-6,Blender,Home Appliances,49.99,"500W, 1.5L, multiple speeds",Blend smoothies and sauces quickly and efficiently
-7,Yoga Mat,Sports,19.99,"non-slip, 6mm, lightweight",Comfortable yoga mat for daily exercise
-8,LED Desk Lamp,Electronics,29.99,"adjustable, touch control, energy-saving",Modern desk lamp with adjustable brightness
-9,Noise Cancelling Headphones,Electronics,129.99,"Bluetooth, over-ear, long battery life",Experience immersive sound with noise cancellation
-10,Electric Kettle,Home Appliances,39.99,"1.7L, auto shutoff, fast boil",Quickly boil water safely and efficiently
-11,Travel Pillow,Travel,14.99,"memory foam, ergonomic, portable",Comfortable pillow for long journeys
-12,Digital Watch,Accessories,59.99,"water-resistant, stopwatch, backlight",Stylish and functional digital watch
-13,Treadmill,Sports,499.99,"foldable, motorized, multiple programs",High-quality treadmill for home workouts
-14,Smartwatch,Electronics,199.99,"heart rate monitor, GPS, notifications",Track fitness and stay connected
-15,Vacuum Cleaner,Home Appliances,149.99,"bagless, 1200W, HEPA filter",Powerful vacuum cleaner for home cleaning
-16,Laptop Backpack,Travel,69.99,"laptop compartment, waterproof, durable",Protect your laptop and essentials while traveling
-17,Hiking Boots,Sports,89.99,"waterproof, ankle support, durable",Sturdy boots for outdoor adventures
-18,Air Fryer,Home Appliances,99.99,"4L, digital display, oil-free cooking",Cook crispy meals with little to no oil
-19,Wireless Charger,Electronics,24.99,"fast charging, Qi-compatible, compact",Convenient wireless charging for your devices
-20,Electric Toothbrush,Personal Care,49.99,"sonic, rechargeable, timer",Keep teeth clean and healthy effortlessly
-21,Portable Speaker,Electronics,59.99,"Bluetooth, waterproof, 10h battery",Take your music anywhere with clear sound
-22,Water Bottle,Travel,12.99,"BPA-free, 1L, leak-proof",Stay hydrated on the go
-23,Camping Tent,Sports,129.99,"4-person, waterproof, easy setup",Comfortable tent for outdoor camping
-24,Hair Dryer,Personal Care,39.99,"1800W, heat settings, lightweight",Dry hair quickly with multiple settings
-25,Sports Watch,Sports,79.99,"stopwatch, water-resistant, durable",Track your workouts efficiently
-26,Laptop,Electronics,799.99,"16GB RAM, 512GB SSD, Intel i7",High-performance laptop for work and gaming
-27,Office Chair,Furniture,149.99,"ergonomic, adjustable height, swivel",Comfortable chair for long work hours
-28,Microwave Oven,Home Appliances,99.99,"20L, grill function, digital",Cook meals quickly with multiple functions
-29,Sunglasses,Accessories,29.99,"UV protection, polarized, lightweight",Stylish sunglasses for everyday use
-30,Tablet,Electronics,299.99,"10-inch, 64GB, WiFi",Portable tablet for work and entertainment
-31,Electric Scooter,Transportation,399.99,"foldable, 15mph, 10-mile range",Eco-friendly scooter for city travel
-32,Camping Stove,Sports,59.99,"portable, gas-powered, lightweight",Cook outdoors easily while camping
-33,Backpacking Tent,Sports,149.99,"2-person, waterproof, lightweight",Perfect for hiking and overnight trips
-34,Cooking Pan,Home Appliances,34.99,"non-stick, 10-inch, dishwasher safe",Cook delicious meals effortlessly
-35,Fitness Tracker,Sports,69.99,"heart rate, step counter, sleep monitor",Monitor your fitness and health daily
-36,Smart Light Bulb,Electronics,19.99,"WiFi, color-changing, app control",Control your lighting with ease and style
-37,Winter Jacket,Clothing,119.99,"waterproof, insulated, hooded",Stay warm and dry during cold weather
-38,Desk Organizer,Furniture,24.99,"multi-compartment, durable, compact",Keep your desk neat and organized
-39,Bluetooth Earbuds,Electronics,49.99,"wireless, noise-isolating, long battery life",High-quality sound for music and calls
-40,Electric Grill,Home Appliances,89.99,"non-stick, temperature control, easy clean",Grill indoors with ease
-41,Running Shorts,Sports,29.99,"lightweight, breathable, moisture-wicking",Comfortable shorts for running and workouts
-42,Camera,Electronics,499.99,"24MP, 4K video, interchangeable lens",Capture stunning photos and videos
-43,Wallet,Accessories,39.99,"leather, RFID protection, slim",Stylish wallet to keep your essentials safe
-44,Bed Sheets,Furniture,59.99,"cotton, 300-thread count, queen size",Soft and comfortable sheets for a restful sleep
-45,Electric Blanket,Home Appliances,79.99,"dual control, washable, warm",Stay cozy during cold nights
-46,Travel Backpack,Travel,89.99,"50L, multiple compartments, durable",Carry all your travel essentials comfortably
-47,Skateboard,Sports,49.99,"maple wood, grip tape, durable",Fun and durable skateboard for all skill levels
-48,Smart Thermostat,Home Appliances,129.99,"WiFi, programmable, energy-saving",Control your home's temperature smartly
-49,Action Camera,Electronics,149.99,"waterproof, 4K, wide-angle",Capture adventures with high-quality video
-50,Cycling Helmet,Sports,59.99,"lightweight, adjustable, ventilated",Protective helmet for safe cycling
+product_id,product_name,brand,category,price,rating,stock,features,description
+P1001,Apple iPhone 15,Apple,Smartphones,799,4.8,120,A16 Bionic;128GB;48MP Camera,Latest iPhone with advanced camera and performance
+P1002,Samsung Galaxy S24,Samsung,Smartphones,749,4.7,95,Snapdragon 8 Gen 3;256GB;50MP Camera,Premium Android smartphone with AI features
+P1003,Sony WH-1000XM5,Sony,Headphones,349,4.9,60,Noise Cancelling;Bluetooth 5.2;30h Battery,Industry-leading wireless noise-canceling headphones
+P1004,Dell XPS 13,Dell,Laptops,1299,4.6,45,Intel Core Ultra 7;16GB RAM;512GB SSD,Lightweight premium ultrabook
+P1005,Nike Air Zoom Pegasus 41,Nike,Running Shoes,140,4.5,200,Breathable Mesh;Responsive Cushioning,Popular daily running shoe for comfort and performance
+P1006,Apple MacBook Air M3,Apple,Laptops,1099,4.9,80,M3 Chip;16GB RAM;512GB SSD,Thin and powerful laptop with long battery life
+P1007,Canon EOS R50,Canon,Cameras,679,4.7,30,24.2MP;4K Video;Mirrorless,Compact mirrorless camera for creators
+P1008,LG C4 OLED 55,LG,Televisions,1399,4.8,25,OLED Display;4K;120Hz,Premium OLED TV with exceptional picture quality
+P1009,Fitbit Charge 6,Fitbit,Wearables,159,4.4,110,Heart Rate Monitor;GPS;Sleep Tracking,Fitness tracker with health insights
+P1010,Instant Pot Duo 7-in-1,Instant Pot,Kitchen Appliances,99,4.7,150,Pressure Cooker;Slow Cooker;Rice Cooker,Versatile multi-cooker for everyday cooking
+P1011,Google Pixel 9,Google,Smartphones,799,4.8,90,Tensor G4;128GB;50MP Camera,AI-powered smartphone with advanced photography
+P1012,OnePlus 13,OnePlus,Smartphones,699,4.7,85,Snapdragon 8 Elite;256GB;100W Charging,Flagship Android phone with fast charging
+P1013,Bose QuietComfort Ultra,Bose,Headphones,429,4.8,50,Noise Cancelling;Spatial Audio;24h Battery,Premium wireless headphones with immersive sound
+P1014,HP Spectre x360,HP,Laptops,1399,4.7,40,Intel Core Ultra 7;16GB RAM;1TB SSD,Convertible laptop with premium design
+P1015,Adidas Ultraboost Light,Adidas,Running Shoes,180,4.6,170,Boost Midsole;Primeknit Upper,Comfortable running shoe with energy return
+P1016,Lenovo ThinkPad X1 Carbon,Lenovo,Laptops,1499,4.8,35,Intel Core Ultra 7;32GB RAM;1TB SSD,Business ultrabook with durability and performance
+P1017,Nikon Z50,Nikon,Cameras,799,4.6,28,20.9MP;4K Video;Mirrorless,Compact camera for photography enthusiasts
+P1018,Samsung QN90D 65,Samsung,Televisions,1799,4.8,22,Neo QLED;4K;144Hz,Bright premium TV for movies and gaming
+P1019,Garmin Venu 3,Garmin,Wearables,449,4.7,75,GPS;Health Tracking;AMOLED Display,Advanced smartwatch for fitness monitoring
+P1020,Ninja Foodi Deluxe,Ninja,Kitchen Appliances,199,4.8,120,Pressure Cooker;Air Fryer;Slow Cooker,Multi-functional cooker for versatile meals
+P1021,Xiaomi 15,Xiaomi,Smartphones,649,4.6,130,Snapdragon 8 Elite;256GB;Leica Camera,Flagship smartphone with premium camera system
+P1022,JBL Tour One M3,JBL,Headphones,299,4.5,70,Adaptive ANC;Bluetooth 5.3;40h Battery,Wireless headphones with rich sound quality
+P1023,Acer Swift Go 14,Acer,Laptops,899,4.5,65,Intel Core Ultra 5;16GB RAM;512GB SSD,Portable laptop for productivity and travel
+P1024,ASICS Gel Nimbus 27,ASICS,Running Shoes,160,4.7,180,FF Blast Cushioning;Breathable Upper,High-cushion running shoe for long distances
+P1025,Fujifilm X-S20,Fujifilm,Cameras,1299,4.8,18,26MP;6K Video;Mirrorless,Creator-focused camera with excellent image quality
+P1026,Sony Bravia 8 OLED 65,Sony,Televisions,2199,4.9,15,OLED Panel;4K;120Hz,Premium OLED TV with cinematic visuals
+P1027,Apple Watch Series 10,Apple,Wearables,429,4.9,95,ECG;GPS;Health Tracking,Advanced smartwatch with health and fitness features
+P1028,Cuisinart Air Fryer Oven,Cuisinart,Kitchen Appliances,229,4.6,90,Air Fry;Bake;Toast,Versatile countertop cooking appliance
+P1029,Motorola Edge 60 Pro,Motorola,Smartphones,599,4.5,100,144Hz Display;256GB;50MP Camera,Premium smartphone with smooth display
+P1030,Sennheiser Momentum 4,Sennheiser,Headphones,349,4.8,55,ANC;60h Battery;Bluetooth 5.2,High-fidelity wireless headphones
+P1031,Microsoft Surface Laptop 7,Microsoft,Laptops,1299,4.7,45,Snapdragon X Elite;16GB RAM;512GB SSD,AI-ready laptop with long battery life
+P1032,Brooks Ghost 16,Brooks,Running Shoes,140,4.6,160,Soft Cushioning;Road Running,Reliable daily trainer for runners
+P1033,Panasonic Lumix G100D,Panasonic,Cameras,749,4.5,32,20MP;4K Video;Mirrorless,Compact vlogging camera with quality audio
+P1034,TCL QM8 75,TCL,Televisions,1699,4.7,20,Mini LED;4K;144Hz,Large-screen TV with strong HDR performance
+P1035,Whoop 5.0,Whoop,Wearables,299,4.5,85,Recovery Tracking;Sleep Analysis,Performance-focused wearable for athletes
+P1036,Breville Smart Oven Air,Breville,Kitchen Appliances,399,4.8,40,Air Fry;Convection;Dehydrate,Premium countertop oven for home cooking
+P1037,Nothing Phone 3,Nothing,Smartphones,699,4.6,95,Glyph Interface;256GB;50MP Camera,Distinctive smartphone with clean software
+P1038,Beats Studio Pro,Beats,Headphones,349,4.6,65,ANC;Spatial Audio;40h Battery,Stylish wireless headphones with powerful bass
+P1039,MSI Prestige 14 AI,MSI,Laptops,1199,4.5,38,Intel Core Ultra 7;32GB RAM;1TB SSD,Lightweight AI-enhanced productivity laptop
+P1040,Hoka Clifton 10,Hoka,Running Shoes,150,4.8,140,Lightweight Cushioning;Breathable Mesh,Popular running shoe with plush comfort
+P1041,Olympus OM-D E-M10 IV,Olympus,Cameras,899,4.7,24,20MP;4K Video;Mirrorless,Compact camera with image stabilization
+P1042,Hisense U8N 65,Hisense,Televisions,1499,4.7,30,Mini LED;4K;144Hz,High-performance TV with bright HDR visuals
+P1043,Samsung Galaxy Watch 8,Samsung,Wearables,379,4.7,105,GPS;Sleep Tracking;AMOLED,Smartwatch with advanced wellness features
+P1044,KitchenAid Artisan Mixer,KitchenAid,Kitchen Appliances,449,4.9,55,5Qt Bowl;Tilt-Head Design,Iconic stand mixer for baking enthusiasts
+P1045,Realme GT 8 Pro,Realme,Smartphones,549,4.5,115,Snapdragon 8 Elite;256GB;120Hz Display,Affordable flagship with premium specifications
+P1046,Audio-Technica ATH-M50xBT2,Audio-Technica,Headphones,199,4.8,80,Bluetooth 5.0;50h Battery;Studio Sound,Wireless version of the popular studio headphones
+P1047,Razer Blade 14,Razer,Laptops,1999,4.7,20,Ryzen 9;RTX 4070;16GB RAM,Compact gaming laptop with premium build quality
+P1048,New Balance Fresh Foam X 1080v14,New Balance,Running Shoes,165,4.8,150,Fresh Foam Cushioning;Engineered Mesh,Comfort-focused running shoe for daily training
+P1049,GoPro HERO13 Black,GoPro,Cameras,499,4.8,70,5.3K Video;Waterproof;HyperSmooth,Action camera for adventure and content creation
+P1050,Philips OLED809 55,Philips,Televisions,1899,4.8,18,OLED Panel;Ambilight;120Hz,Premium OLED TV with immersive lighting effects
+P1051,Oura Ring Gen 4,Oura,Wearables,349,4.7,90,Sleep Tracking;Heart Rate;Recovery Score,Smart ring for comprehensive health monitoring
+P1052,Chefman TurboFry XL,Chefman,Kitchen Appliances,129,4.5,130,Air Fryer;8Qt Capacity;Digital Controls,Large-capacity air fryer for family meals
+P1053,Vivo X200 Pro,Vivo,Smartphones,899,4.8,60,Zeiss Camera;512GB;120Hz Display,Photography-focused flagship smartphone
+P1054,Shure AONIC 50 Gen 2,Shure,Headphones,349,4.7,45,ANC;Spatialized Audio;45h Battery,Premium headphones with audiophile-grade sound
+P1055,Alienware x16 R2,Alienware,Laptops,2499,4.8,15,Intel Core Ultra 9;RTX 4080;32GB RAM,High-end gaming laptop with powerful performance
+P1056,Saucony Endorphin Speed 4,Saucony,Running Shoes,170,4.8,125,PWRRUN PB Foam;Nylon Plate,Versatile running shoe for training and racing
+P1057,Ricoh GR IIIx,Ricoh,Cameras,1099,4.8,12,24MP APS-C;Compact Design;Street Photography,Premium compact camera for everyday photography
+P1058,LG QNED90 65,LG,Televisions,1599,4.7,25,QNED Display;4K;120Hz,Feature-rich television with vibrant colors
+P1059,Amazfit Balance,Amazfit,Wearables,249,4.6,110,GPS;Health Monitoring;AMOLED,Affordable smartwatch with extensive fitness tracking
+P1060,COSORI Pro Air Fryer,COSORI,Kitchen Appliances,149,4.7,140,Air Fry;Digital Controls;Large Capacity,User-friendly air fryer for healthier cooking
+P1061,Apple iPhone 15 Pro Max,Apple,Smartphones,1199,4.9,85,A17 Pro;256GB;5x Telephoto Camera,Premium flagship iPhone with advanced performance
+P1062,Samsung Galaxy Z Fold 6,Samsung,Smartphones,1799,4.7,60,Foldable Display;512GB;Snapdragon 8 Gen 3,High-end foldable smartphone for productivity
+P1063,Google Pixel 9 Pro,Google,Smartphones,999,4.8,70,Tensor G4;Telephoto Lens;AI Camera,Advanced AI-powered photography smartphone
+P1064,OnePlus Open,OnePlus,Smartphones,1399,4.7,50,Foldable Display;16GB RAM;4805mAh Battery,Premium foldable phone with smooth performance
+P1065,Xiaomi Pad 7 Pro,Xiaomi,Smartphones,499,4.6,120,144Hz Display;Snapdragon 8s Gen 3;256GB,High-performance tablet-like smartphone experience
+P1066,Sony WH-1000XM6,Sony,Headphones,399,4.9,65,Improved ANC;Bluetooth 5.3;35h Battery,Next-gen noise cancelling headphones
+P1067,Bose Ultra Open Earbuds,Bose,Headphones,299,4.7,80,Open Audio;Comfort Fit;12h Battery,Innovative open-ear listening experience
+P1068,Sennheiser HD 660S2,Sennheiser,Headphones,499,4.8,40,Open-Back;Studio Sound;Wired,Audiophile-grade reference headphones
+P1069,HP Omen Transcend 16,HP,Laptops,1899,4.7,35,RTX 4070;Intel Core i9;32GB RAM,High-performance gaming laptop
+P1070,MacBook Pro 14 M3 Pro,Apple,Laptops,1999,4.9,60,M3 Pro Chip;18GB RAM;512GB SSD,Professional-grade Apple laptop for creators
+P1071,Lenovo Legion 7i,Lenovo,Laptops,1799,4.8,45,RTX 4080;32GB RAM;Intel i9,Powerful gaming laptop for enthusiasts
+P1072,ASUS ROG Zephyrus G16,ASUS,Laptops,1899,4.8,50,RTX 4070;Intel Ultra 9;16GB RAM,Thin gaming laptop with high performance
+P1073,Dell Inspiron 16 Plus,Dell,Laptops,1199,4.6,70,Intel Core Ultra 7;16GB RAM;1TB SSD,Strong productivity laptop for everyday use
+P1074,Nike Air Jordan 1 Retro High,Nike,Running Shoes,170,4.8,200,Leather Build;Air Cushioning;Classic Design,Iconic sneaker with timeless style
+P1075,Adidas Adizero Adios Pro 4,Adidas,Running Shoes,220,4.8,140,Carbon Plates;Lightstrike Pro;Race Foam,Elite marathon racing shoe
+P1076,Puma Velocity Nitro 3,Puma,Running Shoes,130,4.5,180,Nitro Foam;Breathable Upper;Road Running,Daily running shoe with comfort and bounce
+P1077,Under Armour HOVR Phantom 3,Under Armour,Running Shoes,160,4.6,150,HOVR Cushioning;Smart Tracking;Sock Fit,Performance running shoe with energy return
+P1078,Fujifilm X-T5,Fujifilm,Cameras,1699,4.9,25,40MP;IBIS;6.2K Video,High-resolution mirrorless camera for professionals
+P1079,Sony Alpha A7 IV,Sony,Cameras,2499,4.9,30,33MP;4K 60fps;Full Frame,Professional hybrid mirrorless camera
+P1080,Nikon Z6 III,Nikon,Cameras,2199,4.8,20,24MP;8K Video;IBIS,Advanced full-frame camera for creators
+P1081,Canon EOS R8,Canon,Cameras,1499,4.7,35,24MP;4K 60fps;Full Frame,Compact full-frame mirrorless camera
+P1082,DJI Osmo Action 5,DJI,Cameras,399,4.8,80,4K HDR;Waterproof;Stabilization,Action camera for adventure recording
+P1083,Samsung Neo QLED 85 QN95D,Samsung,Televisions,2999,4.9,18,Mini LED;8K Upscaling;144Hz,Ultra-premium large screen TV
+P1084,LG G4 OLED 65,LG,Televisions,2499,4.9,22,OLED evo;4K;AI Processor,Flagship OLED TV with cinematic visuals
+P1085,Sony Bravia XR A95L,Sony,Televisions,2799,4.9,15,QD-OLED;4K;Cognitive XR,Top-tier OLED TV with unmatched color
+P1086,TCL C845 Mini LED,TCL,Televisions,1299,4.7,40,Mini LED;4K;144Hz,Bright and affordable premium TV
+P1087,Hisense U7K 55,Hisense,Televisions,899,4.6,60,QLED;4K;120Hz,Value-for-money smart TV
+P1088,Apple Watch Ultra 2,Apple,Wearables,799,4.9,80,Titanium Case;GPS;Action Button,Rugged premium smartwatch for athletes
+P1089,Samsung Galaxy Ring,Samsung,Wearables,399,4.6,90,Health Tracking;Sleep Monitoring;Compact Ring,Smart wearable ring for wellness tracking
+P1090,Garmin Fenix 8,Garmin,Wearables,999,4.8,55,Multi-Sport GPS;Solar Charging;Advanced Metrics,Professional-grade outdoor smartwatch
+P1091,Xiaomi Smart Band 9,Xiaomi,Wearables,69,4.5,200,Fitness Tracking;AMOLED;14-Day Battery,Affordable fitness tracker
+P1092,Fitbit Versa 5,Fitbit,Wearables,229,4.6,120,Heart Tracking;GPS;Sleep Score,Wellness smartwatch for everyday use
+P1093,Instant Pot Pro Plus,Instant Pot,Kitchen Appliances,149,4.8,140,Smart Cooking;Pressure Cook;WiFi,Advanced multi-cooker for smart kitchens
+P1094,Ninja Creami Deluxe,Ninja,Kitchen Appliances,249,4.7,90,Ice Cream Maker;Sorbet;Gelato,Home dessert maker for frozen treats
+P1095,Philips Air Fryer XXL,Philips,Kitchen Appliances,199,4.8,160,Large Capacity;Rapid Air;Preset Cooking,Family-size air fryer for healthy meals
+P1096,Breville Barista Express,Breville,Kitchen Appliances,699,4.9,70,Espresso Machine;Built-in Grinder;Milk Frother,Home barista coffee machine
+P1097,Kitchenaid Pro Line Blender,KitchenAid,Kitchen Appliances,599,4.8,50,High Power;Crush Ice;Multiple Speeds,Professional-grade kitchen blender
+P1098,GoPro MAX 360,GoPro,Cameras,499,4.7,65,360 Video;Stabilization;Waterproof,360-degree action camera for creators
+P1099,Ricoh GR IV,Ricoh,Cameras,1199,4.8,20,APS-C Sensor;Compact;Street Photography,Advanced compact camera for professionals
+P1100,DJI Pocket 3,DJI,Cameras,519,4.9,75,Gimbal Stabilization;4K;Compact Design,Portable stabilized camera for vlogging
+P1101,Google Pixel 9a,Google,Smartphones,499,4.6,140,Tensor G4;128GB;AI Camera,Affordable AI-powered Pixel smartphone
+P1102,Apple iPhone SE 4,Apple,Smartphones,599,4.5,160,A16 Bionic;128GB;Compact Design,Budget-friendly iPhone with strong performance
+P1103,Samsung Galaxy A76,Samsung,Smartphones,429,4.4,180,120Hz Display;128GB;OIS Camera,Mid-range smartphone with smooth display
+P1104,OnePlus Nord 5,OnePlus,Smartphones,399,4.5,200,Dimensity 8300;256GB;80W Charging,Affordable performance smartphone
+P1105,Motorola Razr 60 Ultra,Motorola,Smartphones,1099,4.6,70,Foldable Display;Snapdragon 8 Gen 3,Premium flip-style foldable phone
+P1106,Xiaomi Redmi Note 14 Pro,Xiaomi,Smartphones,349,4.5,220,200MP Camera;120Hz;5000mAh,Budget camera-centric smartphone
+P1107,Vivo V30,Vivo,Smartphones,499,4.6,150,Portrait Camera;OLED;80W Charging,Stylish smartphone focused on photography
+P1108,Oppo Reno 12 Pro,Oppo,Smartphones,549,4.5,140,AI Portrait;Dimensity 9200;120Hz,Smooth and stylish mid-premium phone
+P1109,Realme Narzo 70 Ultra,Realme,Smartphones,299,4.4,210,100W Charging;120Hz;5G,High-value budget performance phone
+P1110,Nothing Phone 3a,Nothing,Smartphones,349,4.5,175,Glyph Lights;Clean UI;128GB,Unique design mid-range smartphone
+,,,,,,,,
+P1111,HP Pavilion Aero 14,HP,Laptops,799,4.5,90,Ryzen 7;16GB RAM;512GB SSD,Lightweight productivity laptop
+P1112,ASUS VivoBook S15,ASUS,Laptops,899,4.6,110,Intel Core Ultra 5;16GB RAM;OLED Display,Stylish everyday laptop
+P1113,Acer Predator Helios Neo 16,Acer,Laptops,1499,4.7,60,RTX 4060;Intel i7;16GB RAM,Affordable gaming laptop
+P1114,Lenovo IdeaPad Slim 5,Lenovo,Laptops,699,4.5,130,Ryzen 7;16GB RAM;512GB SSD,Budget productivity laptop
+P1115,MacBook Air M2 2024,Apple,Laptops,999,4.8,140,M2 Chip;8GB RAM;256GB SSD,Efficient lightweight Apple laptop
+P1116,Dell Latitude 7440,Dell,Laptops,1399,4.6,75,Intel Ultra 7;Business Security;16GB RAM,Enterprise business laptop
+P1117,MSI GF63 Thin,MSI,Laptops,999,4.5,85,RTX 4050;Intel i5;16GB RAM,Budget gaming laptop
+P1118,ASUS TUF Gaming A15,ASUS,Laptops,1199,4.7,100,Ryzen 7;RTX 4060;144Hz Display,Durable gaming laptop
+P1119,LG Gram 16,LG,Laptops,1299,4.6,70,Ultra Light;16GB RAM;1TB SSD,Extremely lightweight productivity laptop
+P1120,Razer Blade 16,Razer,Laptops,2799,4.8,30,RTX 4090;32GB RAM;Intel i9,Ultra-premium gaming powerhouse
+,,,,,,,,
+P1121,Adidas Solar Glide 6,Adidas,Running Shoes,150,4.6,180,Boost Foam;Support Frame;Breathable,Comfortable daily running shoe
+P1122,Nike ZoomX Vaporfly 4,Nike,Running Shoes,260,4.9,120,Carbon Plate;ZoomX Foam;Race Ready,Elite marathon racing shoe
+P1123,ASICS Kayano 31,ASICS,Running Shoes,180,4.8,170,Stability Support;Gel Cushioning,Premium stability running shoe
+P1124,New Balance 880v14,New Balance,Running Shoes,140,4.6,190,Fresh Foam;Neutral Support,Daily trainer running shoe
+P1125,Hoka Bondi 9,Hoka,Running Shoes,170,4.8,160,Max Cushioning;Road Running,Ultra-soft long distance shoe
+P1126,Saucony Triumph 22,Saucony,Running Shoes,175,4.7,150,PWRRUN+ Foam;Comfort Fit,Premium cushioned running shoe
+P1127,Puma Deviate Nitro Elite 3,Puma,Running Shoes,220,4.8,130,Carbon Plate;Nitro Foam,Race performance running shoe
+P1128,Brooks Adrenaline GTS 24,Brooks,Running Shoes,150,4.7,175,Support System;Soft Cushioning,Stability daily trainer shoe
+P1129,Under Armour Infinite Pro,Under Armour,Running Shoes,160,4.6,140,Energy Return Foam;Lightweight,Performance training shoe
+P1130,Reebok Floatride Energy 5,Reebok,Running Shoes,120,4.5,200,Floatride Foam;Breathable Upper,Budget running shoe
+,,,,,,,,
+P1131,Canon EOS R6 Mark II,Canon,Cameras,2499,4.9,40,24MP;6K Video;IBIS,Professional hybrid mirrorless camera
+P1132,Sony ZV-E1,Sony,Cameras,2199,4.8,35,Full Frame;4K;Vlogging Features,Creator-focused compact camera
+P1133,Nikon Z fc,Nikon,Cameras,999,4.7,50,Retro Design;20MP;4K Video,Stylish mirrorless camera
+P1134,Fujifilm X-H2,Fujifilm,Cameras,1999,4.9,28,40MP;8K Video;IBIS,High-end creator camera
+P1135,Panasonic Lumix S5 II,Panasonic,Cameras,1999,4.8,30,Full Frame;4K 60fps;IBIS,Hybrid professional camera
+P1136,GoPro HERO12 Black,GoPro,Cameras,399,4.8,100,5.3K Video;HyperSmooth;Waterproof,Action camera for adventure creators
+P1137,DJI Air 3,DJI,Cameras,1099,4.9,80,Dual Camera;4K;Obstacle Avoidance,Advanced drone for aerial photography
+P1138,Insta360 X4,Insta360,Cameras,599,4.8,90,360 Video;8K;Stabilization,360-degree action camera
+P1139,Canon PowerShot G7X Mark III,Canon,Cameras,749,4.7,60,4K Video;Compact;Vlogging,Popular creator compact camera
+P1140,Sony RX100 VII,Sony,Cameras,1199,4.8,45,1-inch Sensor;Zoom Lens;4K,Premium compact travel camera
+,,,,,,,,
+P1141,LG OLED C5 65,LG,Televisions,1999,4.9,30,OLED evo;4K;120Hz,Premium cinematic TV
+P1142,Samsung Crystal UHD 55,Samsung,Televisions,499,4.4,200,4K;HDR;Smart TV,Budget 4K smart TV
+P1143,TCL Q7 65,TCL,Televisions,999,4.6,110,QLED;4K;120Hz,Mid-range performance TV
+P1144,Hisense Mini LED U9,Hisense,Televisions,1799,4.7,60,Mini LED;4K;HDR1500,Bright high-end TV
+P1145,Sony X90L 55,Sony,Televisions,1299,4.7,75,Full Array LED;4K;120Hz,Great gaming and movie TV
+P1146,Philips The One 55,Philips,Televisions,899,4.6,80,4K;Ambilight;HDR,Feature-rich mid-range TV
+P1147,LG QNED85 75,LG,Televisions,1699,4.7,50,QNED;4K;120Hz,Large premium TV
+P1148,Samsung Frame TV 55,Samsung,Televisions,1199,4.8,65,Art Mode;4K;Slim Design,TV that doubles as artwork
+P1149,TCL Mini LED C855,TCL,Televisions,1399,4.7,70,Mini LED;144Hz;4K,High-performance gaming TV
+P1150,Hisense A7N 50,Hisense,Televisions,399,4.4,150,4K;Smart OS;HDR,Budget smart TV
+,,,,,,,,
+P1151,Apple Watch SE 3,Apple,Wearables,249,4.6,180,Heart Rate;GPS;Fitness Tracking,Affordable Apple smartwatch
+P1152,Samsung Galaxy Fit 3,Samsung,Wearables,99,4.4,250,Fitness Tracking;Sleep Monitor,Budget fitness band
+P1153,Garmin Forerunner 265,Garmin,Wearables,499,4.8,90,Running Metrics;GPS;AMOLED,Advanced running smartwatch
+P1154,Fossil Gen 7,Fossil,Wearables,199,4.5,120,Wear OS;Heart Rate;Notifications,Stylish smartwatch
+P1155,Amazfit GTR 5,Amazfit,Wearables,179,4.5,160,GPS;Health Tracking;AMOLED,Budget premium smartwatch
+P1156,Fitbit Inspire 3,Fitbit,Wearables,89,4.4,200,Health Tracking;Sleep Monitoring,Entry-level fitness tracker
+P1157,Oura Ring Gen 5,Oura,Wearables,399,4.8,95,Advanced Sleep Tracking;Recovery,Premium smart ring
+P1158,Whoop Peak 5,Whoop,Wearables,329,4.7,110,Strain Tracking;Sleep Recovery,Athlete performance wearable
+P1159,Xiaomi Smart Band 10,Xiaomi,Wearables,79,4.5,300,Fitness Tracking;OLED;Long Battery,Budget fitness band
+P1160,Polar Vantage V3,Polar,Wearables,599,4.8,60,Training Load;GPS;Advanced Metrics,Professional sports watch
+,,,,,,,,
+P1161,Instant Pot Max 7-in-1,Instant Pot,Kitchen Appliances,179,4.7,140,Pressure Cook;Sous Vide;Sterilize,Advanced multi-cooker
+P1162,Ninja DualZone Air Fryer,Ninja,Kitchen Appliances,199,4.8,180,Dual Basket;Air Fry;Roast,Family air fryer with dual cooking
+P1163,Philips Smart Air Fryer XXL,Philips,Kitchen Appliances,249,4.8,160,Smart Cooking;Large Capacity,Premium smart air fryer
+P1164,Breville Oracle Touch,Breville,Kitchen Appliances,1999,4.9,40,Automatic Espresso;Grinder;Milk Frother,High-end espresso machine
+P1165,KitchenAid Stand Mixer Pro 7,KitchenAid,Kitchen Appliances,549,4.9,70,Heavy Duty;Multiple Attachments,Professional baking mixer
+P1166,COSORI Smart Oven Air Fryer,COSORI,Kitchen Appliances,199,4.7,180,Smart Controls;Air Fry;Bake,Smart countertop oven
+P1167,Panasonic Microwave NN-SN98,Panasonic,Kitchen Appliances,149,4.6,150,Inverter Tech;Sensor Cooking,Efficient microwave oven
+P1168,Instant Vortex Plus,Instant Pot,Kitchen Appliances,129,4.6,200,Air Fry;Roast;Reheat,Compact air fryer
+P1169,Ninja Foodi Grill Max,Ninja,Kitchen Appliances,249,4.8,130,Grill;Air Crisp;Roast,Indoor grilling appliance
+P1170,Breville Juice Fountain,Breville,Kitchen Appliances,179,4.7,110,Juicer;High Speed;Easy Clean,Powerful fruit juicer
+P1171,Google Pixel Fold 2,Google,Smartphones,1599,4.7,60,Foldable;Tensor G5;256GB,Next-gen foldable Pixel device
+P1172,Apple iPhone 16,Apple,Smartphones,899,4.8,140,A18 Chip;128GB;AI Camera,Latest-generation iPhone model
+P1173,Samsung Galaxy S25,Samsung,Smartphones,899,4.8,150,Exynos 2500;AI Features;256GB,Flagship Samsung smartphone
+P1174,OnePlus 13R,OnePlus,Smartphones,499,4.6,200,Snapdragon 8 Gen 3;120Hz;100W,Performance-focused affordable flagship
+P1175,Xiaomi 14T,Xiaomi,Smartphones,599,4.6,180,Leica Camera;120Hz;256GB,Camera-focused premium smartphone
+P1176,Vivo X100 Ultra,Vivo,Smartphones,1099,4.8,90,Zeiss Camera;1-inch Sensor;5G,Professional-grade photography phone
+P1177,Oppo Find X7,Oppo,Smartphones,999,4.7,110,Periscope Zoom;120Hz;AI Imaging,Flagship imaging smartphone
+P1178,Realme GT Neo 6,Realme,Smartphones,399,4.5,210,144Hz;Snapdragon 8s;150W Fast Charge,High-speed budget performance phone
+P1179,Motorola Edge 60 Fusion,Motorola,Smartphones,499,4.5,170,144Hz OLED;AI Camera;5G,Smooth mid-range smartphone
+P1180,Nothing Phone 3 Pro,Nothing,Smartphones,699,4.6,140,Glyph Interface;AI OS;256GB,Premium design-focused smartphone
+,,,,,,,,
+P1181,MacBook Air M3 Pro Max,Apple,Laptops,1499,4.9,80,M3 Chip;18GB RAM;1TB SSD,Ultra-powerful lightweight laptop
+P1182,MacBook Pro 16 M3 Max,Apple,Laptops,2499,4.9,60,M3 Max;36GB RAM;1TB SSD,High-end professional laptop
+P1183,HP Envy 16,HP,Laptops,1299,4.6,90,Intel Ultra 7;RTX 4050;16GB RAM,Creative workstation laptop
+P1184,Dell Alienware M18,Dell,Laptops,2799,4.8,40,RTX 4090;Intel i9;32GB RAM,Ultimate gaming laptop
+P1185,Lenovo Yoga Pro 9i,Lenovo,Laptops,1699,4.8,70,RTX 4060;OLED;Intel Ultra 9,Premium creator laptop
+P1186,ASUS ZenBook Duo 14,ASUS,Laptops,1499,4.7,65,Dual Screen;Intel Ultra 7;16GB RAM,Innovative dual-display laptop
+P1187,Acer Aspire 7,Acer,Laptops,799,4.5,120,RTX 3050;Ryzen 5;16GB RAM,Budget gaming laptop
+P1188,MSI Raider GE78,MSI,Laptops,2399,4.8,50,RTX 4080;Intel i9;32GB RAM,High-performance gaming laptop
+P1189,LG UltraPC 17,LG,Laptops,1099,4.6,80,Ultra Light;Ryzen 7;16GB RAM,Large productivity laptop
+P1190,Razer Blade 18,Razer,Laptops,3199,4.9,30,RTX 4090;32GB RAM;Intel i9,Extreme gaming performance laptop
+,,,,,,,,
+P1191,Nike Air Zoom Maxfly 2,Nike,Running Shoes,250,4.9,140,Carbon Plate;Sprint Spike;ZoomX,Elite sprint racing shoe
+P1192,Adidas Boston 13,Adidas,Running Shoes,160,4.7,170,Lightstrike Pro;Carbon Rods,Race training shoe
+P1193,ASICS Superblast 2,ASICS,Running Shoes,200,4.8,150,Max Cushion;FF Blast+,High-end daily trainer
+P1194,Hoka Rocket X 2,Hoka,Running Shoes,225,4.9,130,Carbon Plate;Light Foam,Elite racing shoe
+P1195,New Balance SC Elite v4,New Balance,Running Shoes,240,4.9,120,Energy Arc;Carbon Plate,Marathon race shoe
+P1196,Puma Fast-R Nitro Elite,Puma,Running Shoes,220,4.8,140,Carbon Plate;Nitro Foam,Elite speed running shoe
+P1197,Brooks Hyperion Elite 4,Brooks,Running Shoes,250,4.8,110,Carbon Plate;Lightweight,Racing performance shoe
+P1198,Saucony Endorphin Elite,Saucony,Running Shoes,230,4.9,130,Carbon Plate;PWRRUN HG,Race day elite shoe
+P1199,Under Armour Velociti Elite 2,Under Armour,Running Shoes,210,4.7,150,Carbon Plate;Lightweight Foam,Speed running shoe
+P1200,Reebok Floatzig 2,Reebok,Running Shoes,130,4.5,200,Energy Return Foam;Comfort,Daily running trainer
+,,,,,,,,
+P1201,Canon EOS R5 Mark II,Canon,Cameras,3499,4.9,35,45MP;8K Video;IBIS,Professional cinema-grade camera
+P1202,Sony A1 II,Sony,Cameras,6499,4.9,20,50MP;8K Video;Stacked Sensor,Ultra-premium hybrid camera
+P1203,Nikon Z8,Nikon,Cameras,3999,4.9,25,45MP;8K Video;Pro Build,High-end professional camera
+P1204,Fujifilm GFX 100S II,Fujifilm,Cameras,4999,4.9,15,102MP;Medium Format,Ultra high-resolution camera
+P1205,Panasonic S1R II,Panasonic,Cameras,3499,4.8,22,High Resolution;Full Frame;8K,Professional hybrid camera
+P1206,DJI Mavic 4 Pro,DJI,Cameras,1999,4.9,90,Triple Camera;8K Video;Obstacle Avoidance,Advanced aerial drone
+P1207,Insta360 Ace Pro 2,Insta360,Cameras,449,4.8,100,8K Video;AI Tracking;Waterproof,Action camera for creators
+P1208,GoPro HERO13 Black Max,GoPro,Cameras,599,4.8,120,360 Capture;5.3K;HyperSmooth,Advanced action camera
+P1209,Sony ZV-1 II,Sony,Cameras,799,4.7,85,Wide Lens;4K Video;Vlogging,Creator compact camera
+P1210,Canon R100,Canon,Cameras,599,4.6,140,24MP;4K Video;Entry Mirrorless,Beginner-friendly camera
+,,,,,,,,
+P1211,Samsung Neo QLED 8K QN900D,Samsung,Televisions,3999,4.9,25,8K;Mini LED;AI Upscaling,Ultra-premium 8K TV
+P1212,LG OLED M4 77,LG,Televisions,4999,4.9,20,Wireless OLED;4K;120Hz,Next-gen wireless OLED TV
+P1213,Sony Bravia 9 75,Sony,Televisions,3499,4.9,18,QD-Mini LED;4K;XR Processor,Flagship cinema TV
+P1214,TCL X11H 85,TCL,Televisions,2999,4.8,40,Mini LED;8K;HDR3000,Bright ultra-large TV
+P1215,Hisense UX 85,Hisense,Televisions,2499,4.7,50,Mini LED;4K;HDR2000,Premium large-screen TV
+P1216,Philips OLED+ 77,Philips,Televisions,2799,4.8,30,OLED;Ambilight;AI Processing,Immersive entertainment TV
+P1217,Samsung Q80C 65,Samsung,Televisions,1199,4.6,120,QLED;4K;120Hz,Mid-range gaming TV
+P1218,LG NanoCell 75,LG,Televisions,999,4.5,140,NanoCell;4K;Smart TV,Budget large TV
+P1219,Sony X85L 55,Sony,Televisions,899,4.6,110,4K;120Hz;LED,Affordable performance TV
+P1220,TCL S5 50,TCL,Televisions,399,4.4,200,4K;HDR;Smart TV,Budget smart TV
+,,,,,,,,
+P1221,Apple Watch Ultra 3,Apple,Wearables,899,4.9,90,Titanium;AI Health;GPS,Rugged premium smartwatch
+P1222,Samsung Galaxy Watch 8 Classic,Samsung,Wearables,449,4.7,120,Rotating Bezel;Health Tracking,Premium smartwatch
+P1223,Garmin Epix Pro 2,Garmin,Wearables,1099,4.9,60,AMOLED;Multisport;GPS,Professional sports watch
+P1224,Fitbit Charge 7,Fitbit,Wearables,149,4.5,180,Health Tracking;Sleep Score,Advanced fitness tracker
+P1225,Amazfit T-Rex Ultra,Amazfit,Wearables,299,4.6,140,Rugged Build;GPS;Battery Life,Outdoor smartwatch
+P1226,Oura Ring Gen 6,Oura,Wearables,449,4.9,100,Advanced Sleep;AI Recovery,Smart health ring
+P1227,Whoop 5 Pro,Whoop,Wearables,349,4.8,120,Performance Tracking;Sleep Recovery,Athlete wearable
+P1228,Polar Ignite 3,Polar,Wearables,249,4.6,160,Fitness Tracking;GPS;AMOLED,Training smartwatch
+P1229,Suunto Race,Suunto,Wearables,399,4.7,110,Sport Metrics;GPS;Durability,Endurance sports watch
+P1230,Xiaomi Watch S4,Xiaomi,Wearables,199,4.5,200,AMOLED;Fitness;GPS,Budget smartwatch
+P1231,Google Pixel 10,Google,Smartphones,999,4.8,120,Tensor G6;AI Camera;256GB,Next-gen AI smartphone with improved photography
+P1232,Samsung Galaxy S25 Ultra,Samsung,Smartphones,1299,4.9,100,200MP Camera;S Pen;Snapdragon 8 Gen 4,Ultra flagship smartphone for professionals
+P1233,OnePlus 14,OnePlus,Smartphones,799,4.7,150,100W Charging;Snapdragon Elite;AI Display,Fast flagship smartphone
+P1234,Xiaomi 15 Ultra,Xiaomi,Smartphones,1099,4.8,130,Leica Quad Camera;1-inch Sensor,Photography flagship smartphone
+P1235,Vivo X110 Pro,Vivo,Smartphones,1199,4.8,90,Zeiss Optics;2K Display;5G,Premium camera smartphone
+P1236,Oppo Find X8 Pro,Oppo,Smartphones,1099,4.7,110,Periscope Zoom;AI Imaging;120Hz,Advanced photography phone
+P1237,Realme GT 8 Ultra,Realme,Smartphones,599,4.6,170,144Hz;Snapdragon Elite;150W Charge,High performance budget flagship
+P1238,Motorola Edge 70 Ultra,Motorola,Smartphones,899,4.6,140,AI Camera;144Hz;5000mAh,Smooth premium smartphone
+P1239,Nothing Phone 4,Nothing,Smartphones,699,4.6,160,Glyph Matrix;AI OS;256GB,Unique design smartphone
+P1240,Asus ROG Phone 9,ASUS,Smartphones,999,4.8,120,Gaming Trigger;165Hz;Snapdragon Elite,Ultimate gaming phone
+,,,,,,,,
+P1241,MacBook Air M4,Apple,Laptops,1199,4.9,140,M4 Chip;16GB RAM;512GB SSD,Lightweight next-gen Apple laptop
+P1242,MacBook Pro 16 M4 Max,Apple,Laptops,2799,4.9,70,M4 Max;36GB RAM;1TB SSD,Extreme performance Apple laptop
+P1243,HP Spectre x360 16,HP,Laptops,1599,4.7,90,OLED;Intel Ultra 9;16GB RAM,Convertible premium laptop
+P1244,Dell XPS 15 Plus,Dell,Laptops,1799,4.8,80,Intel Ultra 9;RTX 4060;OLED,Creator-grade laptop
+P1245,Lenovo ThinkBook 16p,Lenovo,Laptops,1399,4.6,110,Ryzen 9;RTX 4050;16GB RAM,Workstation laptop
+P1246,ASUS ROG Strix Scar 18,ASUS,Laptops,2599,4.9,60,RTX 4090;32GB RAM;240Hz,Extreme gaming laptop
+P1247,Acer Nitro 17,Acer,Laptops,1299,4.7,140,RTX 4060;Ryzen 7;165Hz,Budget gaming powerhouse
+P1248,MSI Stealth 16 Studio,MSI,Laptops,2199,4.8,70,RTX 4070;Intel Ultra 9;OLED,Creator gaming laptop
+P1249,LG Gram SuperSlim 15,LG,Laptops,1099,4.6,120,Ultra Light;OLED;16GB RAM,Thin productivity laptop
+P1250,Razer Blade 14 2026,Razer,Laptops,2299,4.9,50,RTX 4080;32GB RAM;Ultra Thin,Premium gaming laptop
+,,,,,,,,
+P1251,Nike Alphafly 3 Elite,Nike,Running Shoes,280,4.9,150,Carbon Plate;ZoomX;Race Foam,Elite marathon racing shoe
+P1252,Adidas Prime X 2 Strung,Adidas,Running Shoes,250,4.8,140,Stacked Foam;Carbon Rods,Max cushion racing shoe
+P1253,ASICS Metaspeed Sky+,ASICS,Running Shoes,240,4.8,160,Carbon Plate;Speed Foam,Race day performance shoe
+P1254,Hoka Cielo X1,Hoka,Running Shoes,230,4.8,150,Carbon Plate;Light Cushion,Racing shoe for speed
+P1255,New Balance Rebel v4,New Balance,Running Shoes,140,4.6,200,Light Foam;Fast Training,Daily speed trainer
+P1256,Puma Nitro Elite 3,Puma,Running Shoes,220,4.8,170,Carbon Plate;Nitro Foam,Race performance shoe
+P1257,Brooks Glycerin 22,Brooks,Running Shoes,160,4.7,180,Soft Cushion;DNA Loft v3,Comfort running shoe
+P1258,Saucony Ride 17,Saucony,Running Shoes,140,4.6,190,PWRRUN Foam;Neutral Ride,Daily running shoe
+P1259,Under Armour Infinite Elite,Under Armour,Running Shoes,150,4.6,170,Energy Foam;Support Fit,Training shoe
+P1260,Reebok Floatride Energy 6,Reebok,Running Shoes,130,4.5,210,Energy Foam;Lightweight,Budget performance shoe
+,,,,,,,,
+P1261,Canon EOS R1,Canon,Cameras,5999,4.9,20,Global Shutter;8K Video;Pro Body,Flagship professional camera
+P1262,Sony A9 III,Sony,Cameras,5499,4.9,25,Global Shutter;20fps;Pro Sport,High-speed professional camera
+P1263,Nikon Z9 II,Nikon,Cameras,5999,4.9,22,45MP;8K;Pro Build,Top-tier flagship camera
+P1264,Fujifilm X100VI,Fujifilm,Cameras,1599,4.9,60,40MP;Fixed Lens;Street Camera,Premium compact camera
+P1265,Panasonic GH7,Panasonic,Cameras,2199,4.8,40,6K Video;IBIS;Micro Four Thirds,Video creator camera
+P1266,DJI Mini 5 Pro,DJI,Cameras,999,4.9,120,4K Drone;Lightweight;AI Tracking,Compact drone for creators
+P1267,GoPro HERO14 Black,GoPro,Cameras,499,4.8,150,5.3K Video;HyperSmooth;Waterproof,Action camera upgrade
+P1268,Insta360 X5,Insta360,Cameras,699,4.8,110,360 Video;8K;AI Editing,Next-gen 360 camera
+P1269,Sony ZV-E2,Sony,Cameras,899,4.7,100,4K Vlog;AI Focus;Lightweight,Creator-focused camera
+P1270,Canon R200,Canon,Cameras,649,4.6,130,Entry Mirrorless;4K;Compact,Beginner camera
+P1271,Google Pixel 10 Pro XL,Google,Smartphones,1199,4.9,110,Tensor G6;1-inch Sensor;AI Imaging,Ultra premium Pixel flagship
+P1272,Samsung Galaxy S26,Samsung,Smartphones,999,4.8,140,AI Chip;200MP Camera;120Hz,Next-gen Samsung flagship
+P1273,OnePlus 14T,OnePlus,Smartphones,649,4.6,180,Dimensity 9400;120W Charging,Affordable performance flagship
+P1274,Xiaomi 16 Pro Max,Xiaomi,Smartphones,1199,4.8,120,Leica Quad Camera;2K Display,Premium photography smartphone
+P1275,Vivo X120 Ultra,Vivo,Smartphones,1299,4.9,80,Zeiss 1-inch Sensor;AI Portrait,Ultra camera flagship
+P1276,Oppo Find X9,Oppo,Smartphones,1099,4.7,100,Periscope Zoom;AI Night Mode,Advanced imaging phone
+P1277,Realme GT 9 Pro,Realme,Smartphones,699,4.6,160,144Hz;Snapdragon Elite;150W Fast Charge,High-speed budget flagship
+P1278,Motorola Edge 70 Fusion,Motorola,Smartphones,549,4.5,150,AI Camera;OLED;5G,Smooth mid-range phone
+P1279,Nothing Phone 4 Pro,Nothing,Smartphones,799,4.7,130,Glyph Interface;AI OS;256GB,Premium design phone
+P1280,Asus Zenfone 11 Ultra,ASUS,Smartphones,899,4.6,120,144Hz Display;Snapdragon Elite,Compact flagship smartphone
+,,,,,,,,
+P1281,MacBook Air M4 Pro,Apple,Laptops,1399,4.9,130,M4 Chip;18GB RAM;512GB SSD,Enhanced ultra-light Apple laptop
+P1282,MacBook Pro 14 M4 Max,Apple,Laptops,2599,4.9,75,M4 Max;32GB RAM;1TB SSD,Professional creative laptop
+P1283,HP EliteBook 1040 G11,HP,Laptops,1499,4.7,90,Intel Ultra 7;Security;16GB RAM,Enterprise business laptop
+P1284,Dell XPS 17 2026,Dell,Laptops,2199,4.8,70,RTX 4070;OLED;Ultra 9,Large premium creator laptop
+P1285,Lenovo Legion Slim 7i,Lenovo,Laptops,1799,4.8,85,RTX 4070;Ultra 9;Slim Gaming,Thin gaming laptop
+P1286,ASUS ROG Flow Z13,ASUS,Laptops,1599,4.7,95,Tablet PC;RTX 4060;Touchscreen,Convertible gaming device
+P1287,Acer Predator Triton 17X,Acer,Laptops,2499,4.9,60,RTX 4090;Ultra 9;240Hz,Elite gaming laptop
+P1288,MSI Titan GT77,MSI,Laptops,3999,4.9,30,RTX 4090;Desktop CPU;32GB RAM,Extreme performance laptop
+P1289,LG Gram 17 Pro,LG,Laptops,1299,4.6,110,Ultra Light;RTX 4050;Large Display,Portable large laptop
+P1290,Razer Blade 16 OLED,Razer,Laptops,2999,4.9,45,RTX 4090;OLED;Ultra Thin,Premium gaming laptop
+,,,,,,,,
+P1291,Nike Vaporfly 4 Elite,Nike,Running Shoes,270,4.9,160,Carbon Plate;ZoomX;Race Foam,Elite marathon racing shoe
+P1292,Adidas Adios Pro 5,Adidas,Running Shoes,230,4.8,150,Carbon Rods;Lightstrike Pro,Race performance shoe
+P1293,ASICS Metaspeed Edge+,ASICS,Running Shoes,240,4.8,140,Carbon Plate;Speed Focus,Racing shoe for cadence runners
+P1294,Hoka Mach X 2,Hoka,Running Shoes,180,4.7,170,Responsive Foam;Speed Trainer,Fast training shoe
+P1295,New Balance SC Trainer v3,New Balance,Running Shoes,200,4.8,160,Carbon Plate;Cushion Foam,Long distance trainer
+P1296,Puma Deviate Nitro 4,Puma,Running Shoes,170,4.7,180,Nitro Foam;Carbon Plate,Versatile performance shoe
+P1297,Brooks Hyperion Max 3,Brooks,Running Shoes,180,4.7,175,Light Cushion;Speed Focus,Fast daily trainer
+P1298,Saucony Endorphin Pro 5,Saucony,Running Shoes,240,4.9,150,Carbon Plate;Race Foam,Elite racing shoe
+P1299,Under Armour Velociti 4,Under Armour,Running Shoes,150,4.6,160,Light Foam;Energy Return,Performance trainer
+P1300,Reebok Floatzig Pro 2,Reebok,Running Shoes,140,4.6,200,Zig Foam;Comfort Ride,Daily running shoe
+,,,,,,,,
+P1301,Canon EOS R3 Mark II,Canon,Cameras,4999,4.9,25,30fps;8K Video;Pro Body,Professional sports camera
+P1302,Sony A7 V,Sony,Cameras,2799,4.9,40,33MP;8K Video;IBIS,Hybrid professional camera
+P1303,Nikon Z7 III,Nikon,Cameras,3299,4.8,30,High Resolution;8K Video,Professional studio camera
+P1304,Fujifilm X-T6,Fujifilm,Cameras,1899,4.9,35,40MP;IBIS;Film Simulation,Creator-focused camera
+P1305,Panasonic S5 III,Panasonic,Cameras,2299,4.8,28,6K Video;Full Frame;IBIS,Hybrid video camera
+P1306,DJI Air 4,DJI,Cameras,1299,4.9,100,4K HDR;AI Flight;Obstacle Avoidance,Advanced drone
+P1307,GoPro HERO15 Black,GoPro,Cameras,599,4.8,140,6K Video;HyperSmooth;Waterproof,Next-gen action camera
+P1308,Insta360 X6,Insta360,Cameras,799,4.9,120,8K 360 Video;AI Editing,Professional 360 camera
+P1309,Sony ZV-E3,Sony,Cameras,999,4.8,90,4K Vlog;AI Focus;Lightweight,Creator camera
+P1310,Canon R10 Mark II,Canon,Cameras,799,4.7,110,24MP;4K 60fps;Compact,Entry-level mirrorless
+,,,,,,,,
+P1311,Samsung Neo QLED 8K QN95E,Samsung,Televisions,4299,4.9,22,8K;Mini LED;AI Upscaling,Ultra premium TV
+P1312,LG OLED G5 77,LG,Televisions,4499,4.9,25,OLED evo;4K;AI Processor,Flagship OLED TV
+P1313,Sony Bravia 10,Sony,Televisions,3799,4.9,18,QD-OLED;4K;XR AI,Cinema-grade TV
+P1314,TCL X12 85,TCL,Televisions,3199,4.8,40,Mini LED;8K;HDR Pro,Large premium TV
+P1315,Hisense UX 100,Hisense,Televisions,2999,4.8,35,Mini LED;4K;HDR Ultra,Extra-large premium TV
+P1316,Philips OLED+ 85,Philips,Televisions,3499,4.8,28,OLED;Ambilight;AI,Immersive large TV
+P1317,Samsung Q70D 65,Samsung,Televisions,999,4.6,150,QLED;4K;120Hz,Mid-range smart TV
+P1318,LG NanoCell 86,LG,Televisions,1199,4.5,140,NanoCell;4K;HDR,Budget large TV
+P1319,Sony X80L 75,Sony,Televisions,1099,4.6,130,4K;LED;Smart TV,Affordable big TV
+P1320,TCL S6 55,TCL,Televisions,449,4.4,200,4K;HDR;Smart OS,Budget smart TV
+,,,,,,,,
+P1321,Apple Watch SE 4,Apple,Wearables,279,4.6,190,Heart Rate;GPS;Sleep Tracking,Affordable smartwatch
+P1322,Samsung Galaxy Watch 9,Samsung,Wearables,499,4.8,120,Health AI;GPS;AMOLED,Premium smartwatch
+P1323,Garmin Fenix 8 Pro,Garmin,Wearables,1199,4.9,70,Multisport;Solar;Advanced GPS,Pro outdoor watch
+P1324,Fitbit Charge 8,Fitbit,Wearables,159,4.5,210,Health Tracking;Sleep Score,Updated fitness tracker
+P1325,Amazfit GTR 6,Amazfit,Wearables,199,4.6,180,AMOLED;GPS;Battery Life,Budget smartwatch
+P1326,Oura Ring Gen 7,Oura,Wearables,499,4.9,120,AI Sleep Tracking;Recovery,Advanced smart ring
+P1327,Whoop 6 Pro,Whoop,Wearables,379,4.8,130,Performance Tracking;Strain Analysis,Athlete wearable
+P1328,Polar Vantage V4,Polar,Wearables,649,4.8,80,Training Load;GPS;AMOLED,Professional sports watch
+P1329,Suunto Vertical 2,Suunto,Wearables,699,4.7,90,Outdoor GPS;Durability,Adventure smartwatch
+P1330,Xiaomi Watch S5,Xiaomi,Wearables,219,4.5,220,AMOLED;Fitness;GPS,Budget smartwatch
+P1331,Pixel Slate X,Google,Tablets,799,4.6,120,Tensor G5;12.4in Display;Stylus Support,Premium productivity tablet
+P1332,Galaxy Book Ultra 16,Samsung,Laptops,1899,4.8,70,OLED;RTX 4070;Ultra 9,High-end creator laptop
+P1333,AirPods Max 2,Apple,Headphones,549,4.8,90,Spatial Audio;ANC;USB-C,Premium over-ear headphones
+P1334,Soundcore AeroFit Pro,Anker,Headphones,129,4.5,200,Open Ear;Bluetooth 5.3;Water Resistant,Sport earbuds
+P1335,Pixel Buds Pro 2,Google,Headphones,199,4.6,160,ANC;AI Audio;Wireless,Smart earbuds for Pixel ecosystem
+P1336,Xiaomi Smart TV Stick 4K,Xiaomi,Televisions,49,4.4,300,4K Streaming;HDR;Compact,Streaming device for any TV
+P1337,Fitbit Sense 3,Fitbit,Wearables,249,4.6,180,ECG;Stress Tracking;GPS,Health-focused smartwatch
+P1338,Garmin Instinct 3,Garmin,Wearables,499,4.8,140,Rugged GPS;Solar Charging,Outdoor adventure watch
+P1339,Oppo Watch X,Oppo,Wearables,299,4.5,160,AMOLED;Health AI;GPS,Smartwatch with fitness focus
+P1340,Noise ColorFit Ultra 3,Noise,Wearables,79,4.4,400,SpO2;Heart Rate;1.96in Display,Budget fitness smartwatch
+,,,,,,,,
+P1341,Alienware x14 R3,Dell,Laptops,1899,4.7,65,RTX 4060;Ultra 7;Compact Gaming,Thin gaming laptop
+P1342,Surface Pro 10,Microsoft,Laptops,1299,4.7,110,Touchscreen;Stylus;AI Copilot,2-in-1 productivity device
+P1343,Redmi Pad Pro 5G,Xiaomi,Tablets,399,4.5,180,120Hz;Snapdragon 7s;Large Display,Budget tablet
+P1344,iPad Air M3,Apple,Tablets,699,4.8,140,M3 Chip;Liquid Retina;Apple Pencil,Powerful lightweight tablet
+P1345,Galaxy Tab S10 Ultra,Samsung,Tablets,1199,4.9,90,14.6in AMOLED;S Pen;120Hz,Ultra-premium Android tablet
+P1346,Lenovo Tab P13 Pro,Lenovo,Tablets,499,4.6,130,OLED;Stylus;Media Focus,Entertainment tablet
+P1347,ASUS ROG Ally X,ASUS,Gaming Consoles,699,4.7,150,Ryzen Z2;Handheld PC;120Hz,Portable gaming device
+P1348,Steam Deck OLED 2,Valve,Gaming Consoles,549,4.8,180,OLED;SteamOS;Handheld Gaming,PC gaming handheld
+P1349,Nintendo Switch 2,Nintendo,Gaming Consoles,449,4.9,220,Hybrid Console;4K Docked,Next-gen gaming console
+P1350,PlayStation Portal Slim,Sony,Gaming Consoles,299,4.6,200,Remote Play;8in Display,Cloud gaming device
+,,,,,,,,
+P1351,Canon Pixma G7020,Canon,Printers,249,4.5,160,Ink Tank;WiFi;Scan/Copy,Home office printer
+P1352,HP LaserJet Pro M404,HP,Printers,199,4.6,140,Laser;Fast Print;Business Use,Office laser printer
+P1353,Epson EcoTank ET-4850,Epson,Printers,329,4.7,150,Ink Tank;Wireless;Auto Duplex,Efficient home printer
+P1354,Brother HL-L2395DW,Brother,Printers,179,4.6,180,Laser;Mono;Compact,Affordable office printer
+P1355,Logitech MX Master 4,Logitech,Accessories,129,4.8,250,Ergonomic;Wireless;USB-C,Premium productivity mouse
+P1356,Razer DeathAdder V3 Pro,Razer,Accessories,149,4.7,200,Ultra Light;Wireless;Gaming Sensor,Pro gaming mouse
+P1357,Keychron K8 Pro,Keychron,Accessories,99,4.6,220,Mechanical;Bluetooth;RGB,Wireless mechanical keyboard
+P1358,Apple Magic Keyboard 2,Apple,Accessories,109,4.7,180,Scissor Keys;Wireless;Rechargeable,Apple ecosystem keyboard
+P1359,Samsung T9 SSD 2TB,Samsung,Storage,199,4.8,160,USB 3.2;Portable SSD;Fast Speed,High-speed external storage
+P1360,SanDisk Extreme Pro 1TB,SanDisk,Storage,149,4.7,200,SSD;Portable;Water Resistant,Rugged storage drive
+,,,,,,,,
+P1361,GoPro Hero 11 Mini,GoPro,Cameras,299,4.6,180,Compact;5.3K;Stabilization,Small action camera
+P1362,DJI Neo Drone,DJI,Cameras,199,4.5,220,Mini Drone;4K;AI Tracking,Beginner drone
+P1363,Insta360 Go 4,Insta360,Cameras,249,4.6,200,Thumb Camera;Stabilization,Ultra compact action cam
+P1364,Sony ZV-1F Pro,Sony,Cameras,699,4.7,140,Vlogging;Wide Lens;4K,Creator compact camera
+P1365,Nikon Coolpix P1100,Nikon,Cameras,499,4.5,160,125x Zoom;4K;Bridge Camera,Long zoom camera
+P1366,Canon EOS M200 II,Canon,Cameras,599,4.6,150,Mirrorless;Compact;4K,Entry camera for creators
+P1367,LG Smart Monitor 32,LG,Monitors,399,4.6,180,4K;Smart TV OS;USB-C,Hybrid monitor-TV
+P1368,Samsung Odyssey G9 Neo,Samsung,Monitors,1299,4.8,90,Curved;240Hz;Ultrawide,Gaming ultrawide monitor
+P1369,Dell UltraSharp 27 4K,Dell,Monitors,599,4.7,140,IPS;Color Accurate;USB-C,Professional monitor
+P1370,ASUS ProArt 32 6K,ASUS,Monitors,1499,4.9,70,6K;HDR;Design Work,Creative professional monitor
+,,,,,,,,
+P1371,Nike Tech Backpack 2.0,Nike,Bags,89,4.6,300,Water Resistant;Laptop Compartment,Everyday backpack
+P1372,Samsonite LiteBox Pro,Samsonite,Bags,199,4.7,180,Hard Shell;Lightweight;Travel Suitcase,Premium travel luggage
+P1373,Wildcraft Rucksack 60L,Wildcraft,Bags,69,4.5,400,Outdoor;Waterproof;Large Capacity,Trekking backpack
+P1374,Adidas Gym Duffel Bag,Adidas,Bags,49,4.4,350,Training Bag;Shoe Compartment,Sports duffel bag
+P1375,American Tourister Neo,American Tourister,Bags,129,4.6,220,Spinner Wheels;Durable Shell,Travel suitcase
+P1376,Boat Stone 350 Pro,boAt,Speakers,49,4.5,500,Bluetooth;Portable;Water Resistant,Budget speaker
+P1377,JBL Charge 6,JBL,Speakers,149,4.7,240,Deep Bass;Waterproof;20h Battery,Portable speaker
+P1378,Sony SRS-XG500,Sony,Speakers,399,4.8,120,Party Speaker;Bass Boost,High power speaker
+P1379,Bose SoundLink Max,Bose,Speakers,299,4.8,140,Premium Audio;Portable,High quality speaker
+P1380,Marshall Emberton III,Marshall,Speakers,179,4.7,160,Classic Sound;Portable,Stylish speaker
+P1381,Google Nest Hub Max 2,Google,Smart Home,229,4.6,180,Smart Display;AI Assistant;Camera,Smart home control hub
+P1382,Amazon Echo Show 10,Amazon,Smart Home,249,4.7,200,Rotating Display;Alexa;Smart Control,Voice-controlled smart display
+P1383,Philips Hue Starter Kit,Philips,Smart Home,199,4.8,220,Smart Lighting;RGB;App Control,Smart lighting ecosystem kit
+P1384,TP-Link Deco XE75,TP-Link,Networking,299,4.7,160,WiFi 6E;Mesh System;Tri Band,High-speed home mesh WiFi
+P1385,Netgear Nighthawk AX12,Netgear,Networking,349,4.6,140,WiFi 6;12-Stream;High Speed,Premium router for gaming
+P1386,D-Link AX5400, D-Link,Networking,179,4.5,180,WiFi 6;Dual Band;Security,Affordable high-speed router
+P1387,ASUS RT-AX88U Pro,ASUS,Networking,299,4.8,150,WiFi 6;Gaming Optimized,High-performance router
+P1388,Google Nest Thermostat E,Google,Smart Home,129,4.6,210,Energy Saving;Smart Control,Smart temperature control
+P1389,Ecobee Smart Thermostat Premium,Ecobee,Smart Home,249,4.8,140,AI Heating;Voice Control,Advanced climate control
+P1390,Wyze Cam v4,Wyze,Smart Home,49,4.5,300,HD Camera;Night Vision;App Control,Budget security camera
+,,,,,,,,
+P1391,Apple AirTag Pro,Apple,Accessories,39,4.7,400,Tracking;Bluetooth;Precision Find,Smart item tracker
+P1392,Samsung SmartTag 2,Samsung,Accessories,35,4.6,350,Bluetooth Tracker;Compact,Lost item tracking device
+P1393,Tile Pro 2025,Tile,Accessories,29,4.5,500,Tracking;Replaceable Battery,Universal item tracker
+P1394,Anker PowerCore 20K,Anker,Accessories,59,4.7,420,Fast Charging;USB-C;20,000mAh
+P1395,Baseus 100W Charger,Baseus,Accessories,39,4.6,380,Fast Charging;USB-C;GaN,"High-speed charger, Portable power bank"
+P1396,Ugreen Docking Station 12-in-1,Ugreen,Accessories,89,4.7,260,HDMI;USB-C;Ethernet,Laptop docking hub
+P1397,Logitech StreamCam,Logitech,Accessories,149,4.6,220,1080p;Streaming;USB-C,Content creation camera
+P1398,Razer Kraken V4,Razer,Headphones,129,4.6,210,Gaming Audio;RGB;Surround Sound,Gaming headset
+P1399,Sony INZONE H9,Sony,Headphones,299,4.8,180,ANC;Gaming;Wireless,Premium gaming headset
+P1400,Bose QC Ultra II,Bose,Headphones,449,4.9,160,ANC;Spatial Audio;Premium Sound,Next-gen noise cancelling headphones
+,,,,,,,,
+P1401,Hyundai Smart Dash Cam,Hyundai,Automotive,199,4.5,180,4K Recording;GPS;Night Vision,Car dashboard camera
+P1402,Garmin Dash Cam 67W,Garmin,Automotive,249,4.7,150,Wide Angle;GPS;Voice Control,Advanced dash cam
+P1403,BlackVue DR970X,BlackVue,Automotive,399,4.8,120,4K Cloud;Dual Camera,Premium car security cam
+P1404,Tesla Wall Connector 3,Tesla,Automotive,499,4.9,90,EV Charging;Fast Charge,Home EV charger
+P1405,ChargePoint Home Flex,ChargePoint,Automotive,549,4.8,110,EV Charger;WiFi;Smart Control,Electric vehicle charger
+P1406,Blink EV Charger Lite,Blink,Automotive,399,4.6,130,Fast Charging;Smart App,Budget EV charger
+P1407,Michelin Pilot Sport 5,Michelin,Automotive,199,4.8,220,High Grip;Performance Tire,Sports car tire
+P1408,Goodyear Eagle F1,Goodyear,Automotive,189,4.7,240,Performance Tire;Wet Grip,High performance tire
+P1409,Continental EcoContact 6,Continental,Automotive,149,4.6,260,Fuel Efficient;Durable,Economy tire
+P1410,Bosch Car Battery 70Ah,Bosch,Automotive,129,4.6,300,Long Life;High Power,Automotive battery
+,,,,,,,,
+P1411,Philips Air Purifier 3000i,Philips,Home Appliances,299,4.8,180,HEPA Filter;Smart Sensor,Air purification system
+P1412,Dyson Purifier Cool Gen2,Dyson,Home Appliances,499,4.9,140,Air Purifier;Cooling;Smart Control,Premium air purifier
+P1413,LG Dual Inverter AC 1.5T,LG,Home Appliances,599,4.8,200,Inverter AC;Energy Saving,Efficient air conditioner
+P1414,Daikin Split AC 1.5T,Daikin,Home Appliances,649,4.9,180,Fast Cooling;Silent Mode,Premium AC unit
+P1415,Whirlpool Front Load Washer,Whirlpool,Home Appliances,399,4.7,220,Smart Wash;Energy Efficient,Automatic washing machine
+P1416,IFB Dishwasher Elite,IFB,Home Appliances,449,4.6,160,Auto Clean;Eco Wash,Kitchen dishwasher
+P1417,Prestige Induction Cooktop,Prestige,Kitchen Appliances,59,4.5,400,Fast Heating;Touch Control,Electric cooktop
+P1418,Philips Steam Iron 7000,Philips,Home Appliances,79,4.6,350,Steam Boost;Auto Shutoff,Clothing iron
+P1419,Kent RO Water Purifier,Kent,Home Appliances,199,4.7,300,RO UV UF;Water Purification,Drinking water purifier
+P1420,Mi Robot Vacuum X10,Xiaomi,Home Appliances,299,4.8,210,AI Mapping;Auto Cleaning,Smart vacuum cleaner
+,,,,,,,,
+P1421,SteelSeries Apex Pro TKL,SteelSeries,Accessories,149,4.8,200,Mechanical;RGB;Adjustable Switch,Gaming keyboard
+P1422,Corsair K100 RGB,Corsair,Accessories,199,4.9,180,Mechanical;Macro Keys;RGB,Premium keyboard
+P1423,HyperX Cloud III,HyperX,Headphones,99,4.6,240,Gaming Audio;Comfort Fit,Affordable gaming headset
+P1424,Jabra Elite 8 Active,Jabra,Headphones,179,4.7,190,Waterproof;ANC;Sports Fit,Active lifestyle earbuds
+P1425,Beats Fit Pro 2,Beats,Headphones,199,4.7,210,ANC;Secure Fit;Apple H1,Sport earbuds
+P1426,Anker Soundcore Boom 3i,Anker,Speakers,99,4.6,260,Portable;Bass;Waterproof,Outdoor speaker
+P1427,JBL PartyBox 110,JBL,Speakers,299,4.8,180,Party Sound;LED Lights,High power speaker
+P1428,Sony HT-S2000,Sony,Audio,399,4.7,150,Soundbar;Dolby Atmos,Home theater soundbar
+P1429,Bose Soundbar 600,Bose,Audio,499,4.8,140,Surround Sound;Smart Audio,Premium soundbar
+P1430,Marshall Stanmore III,Marshall,Speakers,279,4.8,160,Classic Design;Rich Sound,Premium home speaker
+,,,,,,,,
+P1431,Fitbit Luxe 2,Fitbit,Wearables,129,4.5,220,Slim Design;Health Tracking,Fashion fitness tracker
+P1432,Garmin Edge 1040,Garmin,Wearables,599,4.8,130,Cycling GPS;Performance Metrics,Advanced cycling computer
+P1433,Suunto 9 Peak Pro,Suunto,Wearables,499,4.7,150,Outdoor GPS;Durability,Adventure watch
+P1434,Polar Grit X2,Polar,Wearables,449,4.7,140,Outdoor Training;GPS,Rugged fitness watch
+P1435,Oura Horizon Ring,Oura,Wearables,399,4.8,160,Sleep Tracking;Recovery,Smart ring
+P1436,Xiaomi Smart Glasses,Xiaomi,Wearables,199,4.6,180,AR Display;Smart Assistant,Smart wearable glasses
+P1437,Rokid Air 2,Rokid,Wearables,399,4.7,120,AR Glasses;Display;Smart Control,Augmented reality glasses
+P1438,Meta Quest 4,Meta,VR Devices,599,4.9,200,VR Headset;Mixed Reality;4K per Eye,Next-gen VR headset
+P1439,PlayStation VR2 Slim,Sony,VR Devices,449,4.8,180,VR Gaming;4K HDR,PlayStation VR headset
+P1440,Valve Index 2,Valve,VR Devices,999,4.9,90,High Fidelity VR;Tracking,Premium PC VR headset
+,,,,,,,,
+P1441,HP LaserJet M209dw,HP,Printers,149,4.6,200,Laser;WiFi;Compact,Budget office printer
+P1442,Epson L3250,Epson,Printers,199,4.7,220,Ink Tank;Wireless;Economy,Home printer
+P1443,Brother DCP-T720DW,Brother,Printers,219,4.7,210,Ink Tank;Duplex;WiFi,Efficient printer
+P1444,Canon Selphy CP1500,Canon,Printers,129,4.5,180,Photo Printing;Compact,Portable photo printer
+P1445,Ricoh SP 230DNw,Ricoh,Printers,159,4.6,170,Laser;Network;Fast Print,Office printer
+P1446,Seagate One Touch 5TB,Seagate,Storage,129,4.7,260,External HDD;USB 3.0,Large storage drive
+P1447,WD My Passport 4TB,Western Digital,Storage,119,4.6,280,Portable HDD;Backup,Reliable storage drive
+P1448,Samsung T7 Shield 4TB,Samsung,Storage,299,4.9,200,Rugged SSD;Fast Transfer,Durable external SSD
+P1449,Crucial X9 Pro 2TB,Crucial,Storage,179,4.7,230,USB-C SSD;Portable,Fast storage drive
+P1450,Kingston NV2 1TB,Kingston,Storage,89,4.6,300,NVMe SSD;High Speed,Internal storage drive
+P1451,Google Nest Wifi Pro 2,Google,Networking,249,4.7,180,WiFi 6E;Mesh;Smart Control,Next-gen home mesh WiFi system
+P1452,TP-Link Archer BE800,TP-Link,Networking,399,4.8,150,WiFi 7;Quad Band;High Speed,Ultra-fast router for modern homes
+P1453,Netgear Orbi 970,Netgear,Networking,899,4.9,90,WiFi 7;Mesh;Enterprise Grade,Premium whole-home network system
+P1454,ASUS ZenWiFi XT12,ASUS,Networking,349,4.7,160,WiFi 6;Mesh;Security,High-performance mesh router
+P1455,D-Link Eagle Pro AI AXE5400,D-Link,Networking,199,4.5,200,WiFi 6E;AI Optimization,Smart home networking router
+,,,,,,,,
+P1456,Apple HomePod Mini 2,Apple,Smart Home,129,4.7,220,Spatial Audio;Siri;Smart Hub,Compact smart speaker
+P1457,Amazon Echo Dot 6,Amazon,Smart Home,59,4.6,300,Alexa;Voice Control;Smart Home,Entry-level smart speaker
+P1458,Google Nest Mini 3,Google,Smart Home,49,4.5,350,Google Assistant;Compact,Smart voice assistant speaker
+P1459,Philips Smart Bulb White+,Philips,Smart Home,19,4.4,500,Smart Lighting;App Control,Smart LED bulb
+P1460,Wyze Cam Pan v3,Wyze,Smart Home,59,4.6,260,360 Camera;Night Vision;App Control,Smart security camera
+,,,,,,,,
+P1461,Tesla Model S Plaid Charger,Tesla,Automotive,699,4.9,80,Ultra Fast Charging;EV Support,High-power EV charging system
+P1462,BMW i Wallbox Pro,BMW,Automotive,799,4.8,70,EV Charger;Smart Control,Home EV charging station
+P1463,Shell Recharge EV Unit,Shell,Automotive,499,4.6,120,Fast Charging;Universal EV,EV charging solution
+P1464,Michelin CrossClimate 3,Michelin,Automotive,199,4.8,200,All Season;High Grip,Premium tire
+P1465,Goodyear Assurance MaxLife,Goodyear,Automotive,149,4.6,240,Long Life Tire;Fuel Efficient,Durable car tire
+,,,,,,,,
+P1466,LG DualCool AI AC 2T,LG,Home Appliances,699,4.8,180,AI Cooling;Energy Saving,Smart air conditioner
+P1467,Daikin Neo Split AC 2T,Daikin,Home Appliances,749,4.9,160,Fast Cooling;Silent Mode,Premium AC system
+P1468,Whirlpool FreshCare Dryer,Whirlpool,Home Appliances,499,4.7,140,Clothes Dryer;Energy Efficient,Smart laundry dryer
+P1469,IFB Top Load Washer Pro,IFB,Home Appliances,429,4.6,170,Smart Wash;Auto Clean,Automatic washing machine
+P1470,Kent Alkaline RO Plus,Kent,Home Appliances,249,4.7,260,RO+UV;Mineral Boost,Water purifier system
+,,,,,,,,
+P1471,SteelSeries Rival 5 Pro,SteelSeries,Accessories,99,4.6,240,Gaming Mouse;RGB;Precision Sensor,Multi-genre gaming mouse
+P1472,Razer BlackWidow V5,Razer,Accessories,169,4.8,210,Mechanical;RGB;Macro Keys,Pro gaming keyboard
+P1473,Corsair HS80 Max,Corsair,Headphones,149,4.7,200,Gaming Audio;Wireless;Dolby,Premium gaming headset
+P1474,Logitech G Pro X 2,Logitech,Headphones,199,4.8,220,Pro Gaming;Wireless;Blue Voice,Esports headset
+P1475,JBL Flip 7,JBL,Speakers,129,4.7,260,Portable;Bass Boost;Waterproof,Compact Bluetooth speaker
+,,,,,,,,
+P1476,Sony WF-1000XM6,Sony,Headphones,279,4.9,200,ANC;Hi-Res Audio;Wireless,Premium earbuds
+P1477,Bose QuietComfort Earbuds III,Bose,Headphones,299,4.9,180,ANC;Spatial Audio;Comfort Fit,Noise cancelling earbuds
+P1478,Apple AirPods Pro 3,Apple,Headphones,249,4.8,300,ANC;H2 Chip;Spatial Audio,Apple premium earbuds
+P1479,Samsung Galaxy Buds 3 Pro,Samsung,Headphones,229,4.7,250,ANC;AI Sound;Wireless,Smart earbuds
+P1480,Nothing Ear 3,Nothing,Headphones,179,4.6,260,Transparent Design;ANC;Hi-Fi,Unique design earbuds
+,,,,,,,,
+P1481,Meta Quest 4 Pro,Meta,VR Devices,799,4.9,180,Mixed Reality;4K per Eye;AI Tracking,Advanced VR headset
+P1482,Apple Vision Air,Apple,VR Devices,1499,4.9,120,Spatial Computing;AR/VR;Ultra Display,Next-gen Apple spatial device
+P1483,Sony XR VR2 Elite,Sony,VR Devices,599,4.8,160,4K VR;Gaming;HDR,PlayStation VR system
+P1484,HTC Vive Focus 4,HTC,VR Devices,999,4.8,140,Standalone VR;Enterprise;6DoF,Professional VR headset
+P1485,Pico 5 Ultra,Pico,VR Devices,699,4.7,150,VR Gaming;High Resolution,Standalone VR device
+,,,,,,,,
+P1486,Seagate IronWolf 8TB,Seagate,Storage,199,4.7,220,NAS Drive;High Reliability,Enterprise storage drive
+P1487,WD Black SN850X 2TB,Western Digital,Storage,179,4.8,240,NVMe SSD;Gaming;Ultra Fast,High-performance SSD
+P1488,Samsung 990 Pro 4TB,Samsung,Storage,329,4.9,200,PCIe 4.0;High Speed,Premium SSD storage
+P1489,Crucial P5 Plus 2TB,Crucial,Storage,149,4.7,260,NVMe SSD;Fast Read/Write,Performance SSD
+P1490,Kingston XS2000 4TB,Kingston,Storage,229,4.8,230,Portable SSD;USB-C;Compact,Fast external storage
+,,,,,,,,
+P1491,Canon Zoemini S2,Canon,Cameras,179,4.5,240,Instant Print;Compact;Bluetooth,Portable photo printer camera
+P1492,Sony RX1R III,Sony,Cameras,3299,4.9,80,Full Frame;Fixed Lens;High Detail,Premium compact camera
+P1493,Nikon Z30 Pro,Nikon,Cameras,799,4.7,160,4K Video;Vlogging;Lightweight,Creator camera
+P1494,Fujifilm Instax Wide Evo,Fujifilm,Cameras,199,4.6,300,Instant Film;Creative Modes,Instant photography camera
+P1495,GoPro Hero 16 Black,GoPro,Cameras,649,4.9,200,6K Video;AI Tracking;HyperSmooth,Next-gen action camera
+,,,,,,,,
+P1496,ASUS ProArt StudioBook 16,ASUS,Laptops,2199,4.9,90,RTX 4070;OLED;Creator Tools,Professional design laptop
+P1497,Dell Precision 7780,Dell,Laptops,2999,4.9,70,Workstation;RTX A5000;Ultra 9,Engineering workstation laptop
+P1498,HP ZBook Fury 16 G11,HP,Laptops,2799,4.8,80,RTX 4090;32GB RAM;Pro GPU,High-end workstation laptop
+P1499,Lenovo ThinkPad P1 Gen 7,Lenovo,Laptops,2399,4.8,85,Workstation;OLED;RTX 4070,Mobile workstation laptop
+P1500,Razer Blade Studio 18,Razer,Laptops,3299,4.9,60,RTX 4090;32GB RAM;Creator Focus,Ultimate creator gaming laptop

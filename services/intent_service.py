@@ -25,9 +25,24 @@ class IntentService:
         print(f"=================== Intent Extracted.... {response.json()}")
         if error_message := response.json().get("error"):
             return error_message.get("message", "Unknown error"), False
-        intent = response.json()["choices"][0]["message"]["content"]
-        print(f"++++++++++++++++++++++++++++++++++= {intent}")
-        intent = json.loads(intent)
+        intent_text = response.json()["choices"][0]["message"]["content"]
+        print(f"++++++++++++++++++++++++++++++++++= {intent_text}")
+
+        try:
+            intent = json.loads(intent_text)
+        except json.JSONDecodeError:
+            print("Invalid intent:", intent_text)
+
+            intent = {
+                "search_text": query,
+                "product_type": "",
+                "category": "",
+                "brand": "",
+                "min_price": 0,
+                "max_price": 0,
+                "required_features": [],
+                "sort_preference": ""
+            }
 
         # SAFE GUARD (IMPORTANT)
         if not intent.get("search_text"):
