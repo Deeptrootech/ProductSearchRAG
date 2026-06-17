@@ -7,14 +7,12 @@ from services.VectorDB.vector_store import VectorStore
 from services.embedding_service import EmbeddingService
 from services.intent_service import IntentService
 from services.llm_service import LLMService
-from services.ranking_service import RankingService
-from services.utils import apply_filters, format_context
+from services.utils import apply_filters, format_context, apply_sort
 
 app = FastAPI()
 vector_store = VectorStore()
 llm_service = LLMService()
 intent_service = IntentService()
-ranking_service = RankingService()
 file_processor = FileProcessor()
 embedding_service = EmbeddingService()
 
@@ -48,42 +46,42 @@ def search(user_query: str, top_k: int = 5):
     Search products.
     This is a RAG (Retrieval Augmented Generation) system.
     """
-    # 1. INTENT (safe extraction, NOT strict)
-    print(f"=================== # 1. INTENT (safe extraction, NOT strict)")
+    # 1. INTENT extraction
+    print(f"=================== # 1. INTENT extraction")
     intent, success = intent_service.extract_intent(user_query)
     if not success:
         return intent
-    search_text = intent["search_text"]
-    # light query enrichment
+    search_parts = [intent.get("search_text", "")]
     if intent.get("brand"):
-        search_text += " " + intent["brand"]
+        search_parts.append(intent["brand"])
+    search_parts.extend(intent.get("required_features", []))
+    search_text = " ".join(p.strip() for p in search_parts if p)
 
-    if intent.get("required_features"):
-        search_text += " " + " ".join(intent["required_features"])
-
-    # 2. RETRIEVAL from vector database (overfetch!)
+    # 2. RETRIEVAL from vector database (Vector Search (semantic))
     print(f"=================== # 2. RETRIEVAL from vector database (overfetch!")
-    products = vector_store.similarity_search_for_asked_question(search_text, top_k=50)
+    retrieval_k = max(top_k * 10, 30)
+    products = vector_store.similarity_search_for_asked_question(search_text, top_k=retrieval_k)
     print(f"++++++++++++++++++++ {products}")
-    # 3. FILTERING (deterministic)
-    print(f"=================== # 3. FILTERING (deterministic)")
-    candidates = apply_filters(products, intent)
 
-    # 4. RANKING (hybrid scoring)
-    print(f"=================== # 4. RANKING (hybrid scoring)")
-    candidates = ranking_service.rank(candidates, intent)
+    # 3. FILTERING & SORTING
+    print(f"=================== # 3. FILTERING & SORTING")
+    products = apply_filters(products, intent)
+    products = apply_sort(products, intent)
+    # Handle If no products filtered
+    if not products:
+        return {
+            "products": [],
+            "explanation": "No matching products found for given query."
+        }
 
-    # 5. LIMIT
-    candidates = candidates[:top_k]
+    # 4. FORMAT
+    print(f"=================== # 4. FORMAT")
+    products = products[:top_k]
+    context = format_context(products)
 
-    # 6. FORMAT
-    print(f"=================== # 6. FORMAT")
-    context = format_context(candidates)
-
-    # 7. FINAL LLM RESPONSE
-    print(f"=================== # 7. FINAL LLM RESPONSE")
-    print(f"=======FINAL LLM RESPONSE============ {user_query} &&&&&&&&&&&&&&&&&&&&&&&&&&&&& {context}")
-    reccomandation = llm_service.get_response(user_query, context)
-    print(f"+++++++++++++++++++++ {reccomandation}")
-
-    return reccomandation
+    # 5. FINAL LLM RESPONSE
+    print(f"=================== # 5. FINAL LLM RESPONSE")
+    print(f"========ASKED TO LLM=========== {user_query} &&&&&&&&&&&&&&&&&&&&&&&&&&&&& {context}")
+    final_response = llm_service.get_response(user_query, context)
+    print(f"++++++++FINAL LLM RESPONSE+++++++++++++ {final_response}")
+    return final_response
