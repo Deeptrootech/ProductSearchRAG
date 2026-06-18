@@ -169,8 +169,6 @@ class VectorStore:
 
         return schema
 
-    metric_type = "COSINE",
-
     def create_index(self):
         index_params = self.client.prepare_index_params()
 
